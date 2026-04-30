@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Favourites</title>
+    <link href="public/css/style.css" rel="stylesheet" />
+    <script src="test.js"></script>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
+    <style>
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        img {
+            width: 370px;
+            height: 350px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <div class="navigation-container">
+
+            <a class="title" href="home.html">Silversale</a>
+
+            <a href="catalogue.html" class="nav-item">
+                <i class="fa-solid fa-list fa-lg"></i>
+                <span>Catalogue</span>
+            </a>
+
+            <div class="search">
+                <form method="GET" action="catalogue.html" class="search-form">
+                    <input class="search-bar" placeholder="Search.." type="text" name="keywords">
+                    <button class="search-button" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+
+            <a href="favourites.html" class="nav-item active">
+                <i class="fa-solid fa-heart fa-lg"></i>
+                <span>Favourites</span>
+            </a>
+
+            <a href="cart.html" class="nav-item">
+                <i class="fa-solid fa-bag-shopping fa-lg"></i>
+                <span>Cart</span>
+            </a>
+
+            <a href="orders.html" class="nav-item">
+                <i class="fa-solid fa-box fa-lg"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="account.html" class="nav-item">
+                <i class="fa-solid fa-user fa-lg"></i>
+                <span>(username)</span>
+            </a>
+        </div>
+    </header>
+
+
+    <div class="item-list">
+
+        <a class="grid-item" href="item.html">
+            <img alt="item" src="public/item_1.png">
+            <p class="spacingText">Baseball Cap</p>
+            <p class="spacingText">$26</p>
+            <p class="spacingText">
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-regular fa-star fa-xs"></i>
+            <span> (234) </span></p>
+            <div class="item-btn-section">
+                <form method="POST" action="/programme/${programme.id}/unwatch">
+                    <button class="item-btn picked">Unwatch</button>
+                </form>
+            </div>
+        </a>
+
+        <a class="grid-item" href="item.html">
+            <img alt="item" src="public/item_1.png">
+            <p class="spacingText">Baseball Cap</p>
+            <p class="spacingText">$26</p>
+            <p class="spacingText">
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-solid fa-star fa-xs"></i>
+            <i class="fa-regular fa-star fa-xs"></i>
+            <span> (234) </span></p>
+            <div class="item-btn-section">
+                <form method="POST" action="/programme/${programme.id}/unwatch">
+                    <button class="item-btn picked">Unwatch</button>
+                </form>
+            </div>
+        </a>
+        
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact us</h3>
+                <p>+1 234-567-8901 (General Questions)</p>
+                <p>+1 234-567-8901 (Customer Support)</p>
+                <p>ViveLeau@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Stay connected</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </div>
+                <a href="#">About us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

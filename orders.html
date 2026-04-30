@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link href="http://127.0.0.1:5500//public/css/style.css" rel="stylesheet" />
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navigation-container">
+
+            <a class="title" href="home.html">Silversale</a>
+
+            <a href="/catalogue.html" class="nav-item">
+                <i class="fa-solid fa-list fa-lg"></i>
+                <span>Catalogue</span>
+            </a>
+
+            <div class="search">
+                <form method="GET" action="/catalogue.html" class="search-form">
+                    <input class="search-bar" placeholder="Search.." type="text" name="keywords">
+                    <button class="search-button" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+
+            <a href="/favourites.html" class="nav-item">
+                <i class="fa-solid fa-heart fa-lg"></i>
+                <span>Favourites</span>
+            </a>
+
+            <a href="/cart.html" class="nav-item">
+                <i class="fa-solid fa-bag-shopping fa-lg"></i>
+                <span>Cart</span>
+            </a>
+
+            <a href="/orders.html" class="nav-item active">
+                <i class="fa-solid fa-box fa-lg"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="/account.html" class="nav-item">
+                <i class="fa-solid fa-user fa-lg"></i>
+                <span>(username)</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="orders-box">
+
+        <h1>Orders</h1>
+        <section class="order">
+            <h2>Order ID: 2442FAF</h2>
+
+            <div class="order-items">
+                <a class="order-item" href="/item.html">
+                    <img src="public/item_1.png" alt="item">
+                    <p>Name</p>
+                    <p>Price</p>
+                    <p>Rating</p>
+                </a>
+
+                <a class="order-item" href="/item.html">
+                    <img src="public/item_1.png" alt="item">
+                    <p>Name</p>
+                    <p>Price</p>
+                    <p>Rating</p>
+                </a>
+
+                <a class="order-item" href="/item.html">
+                    <img src="public/item_1.png" alt="item">
+                    <p>Name</p>
+                    <p>Price</p>
+                    <p>Rating</p>
+                </a>
+            </div>
+
+            <div class="order-info">
+            <p>Sum: $42</p>
+            <p>Date: 04/04/2026</p>
+            <p>Address: Samal-3, 25</p>
+            <p>Status: Processing</p>
+            </div>
+        </section>
+
+        <section class="order">
+            <h2>Order ID: 2362dAF</h2>
+
+            <div class="order-items">
+                <a class="order-item" href="/item.html">
+                    <img src="public/item_1.png" alt="item">
+                    <p>Name</p>
+                    <p>Price</p>
+                    <p>Rating</p>
+                </a>
+
+                <a class="order-item" href="/item.html">
+                    <img src="public/item_1.png" alt="item">
+                    <p>Name</p>
+                    <p>Price</p>
+                    <p>Rating</p>
+                </a>
+            </div>
+
+            <div class="order-info">
+            <p>Sum: $24</p>
+            <p>Date: 04/04/2026</p>
+            <p>Address: Al-Farabi, 25</p>
+            <p>Status: Shipped</p>
+            </div>
+        </section>
+    </div>
+
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h3>Contact us</h3>
+                <p>+1 234-567-8901 (General Questions)</p>
+                <p>+1 234-567-8901 (Customer Support)</p>
+                <p>ViveLeau@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Stay connected</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </div>
+                <a href="#">About us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

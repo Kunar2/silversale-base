@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link href="public/css/style.css" rel="stylesheet" />
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
+    <script src="checkout.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="navigation-container">
+
+            <a class="title" href="/home.html">Silversale</a>
+
+            <a href="/catalogue.html" class="nav-item">
+                <i class="fa-solid fa-list fa-lg"></i>
+                <span>Catalogue</span>
+            </a>
+
+            <div class="search">
+                <form method="GET" action="/catalogue.html" class="search-form">
+                    <input class="search-bar" placeholder="Search.." type="text" name="keywords">
+                    <button class="search-button" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+
+            <a href="/favourites.html" class="nav-item">
+                <i class="fa-solid fa-heart fa-lg"></i>
+                <span>Favourites</span>
+            </a>
+
+            <a href="/cart.html" class="nav-item active">
+                <i class="fa-solid fa-bag-shopping fa-lg"></i>
+                <span>Cart</span>
+            </a>
+
+            <a href="/orders.html" class="nav-item">
+                <i class="fa-solid fa-box fa-lg"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="/account.html" class="nav-item">
+                <i class="fa-solid fa-user fa-lg"></i>
+                <span>(username)</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="checkout-boxes">
+
+    <div class="address-box">
+
+        <div class="payment-title">
+            Delivery details
+        </div>
+
+        <div>
+            <label for="recipient-name">Address:</label>
+            <input id="recipient-name" class="credentials-input address-input" maxlength="25" type="text">
+        </div>
+
+
+    </div>
+
+    <div class="price-box">
+        <div>Subtotal: $120</div>
+        <div>Items: $100</div>
+        <div>Shipping tax: $20</div>
+        <a href="#checkout2">
+            <button class="checkout2" type="button">Order</button>
+        </a>
+    </div>
+
+        <div class="cc-box">
+
+            <div class="payment-title">
+                <span>Credit card payment</span>
+            </div>
+
+            <div class=cc-section>
+                <label for="cc-number1" class="input-field-type">Card number:</label>
+                <div class="cc-number">
+                    <input id="cc-number1" data-previous-value="" class="credentials-input cc-number-input"
+                        maxlength="4" type="text" placeholder="xxxx" onfocus="focusNumber(this)"
+                        oninput="modifyNumber(this, 'cc-number')">
+                    <input id="cc-number2" data-previous-value="" class="credentials-input cc-number-input"
+                        maxlength="4" type="text" placeholder="xxxx" onfocus="focusNumber(this)"
+                        oninput="modifyNumber(this, 'cc-number')">
+                    <input id="cc-number3" data-previous-value="" class="credentials-input cc-number-input"
+                        maxlength="4" type="text" placeholder="xxxx" onfocus="focusNumber(this)"
+                        oninput="modifyNumber(this, 'cc-number')">
+                    <input id="cc-number4" data-previous-value="" class="credentials-input cc-number-input"
+                        maxlength="4" type="text" placeholder="xxxx" onfocus="focusNumber(this)"
+                        oninput="modifyNumber(this, 'cc-number')">
+                </div>
+            </div>
+
+            <div class="cc-section">
+                <label for="cc-name">Cartholder's name:</label>
+                <input id="cc-name" class="credentials-input cc-name-input" maxlength="26" type="text"
+                    placeholder="Name" oninput="modifyNumber(this, 'cardholder-name')">
+            </div>
+
+            <div class="cc-section">
+                <div class="cc-expiration-cvv-box">
+                    <div>
+                        <label for="expiration-date">Expiration date:</label>
+                        <input id="expiration-date" class="credentials-input cc-expiration-cvv-input" maxlength="5"
+                            type="text" placeholder="MM/YY" oninput="modifyNumber(this, 'expiration-date')">
+                    </div>
+
+                    <div class="cc-cvv">
+                        <label for="cvv">CVV:</label>
+                        <input id="cvv" class="credentials-input cc-expiration-cvv-input" maxlength="3" type="text"
+                            placeholder="CVV" oninput="validateDigit(this, 'validateElementValue')">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h3>Contact us</h3>
+                <p>+1 234-567-8901 (General Questions)</p>
+                <p>+1 234-567-8901 (Customer Support)</p>
+                <p>ViveLeau@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Stay connected</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </div>
+                <a href="#">About us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

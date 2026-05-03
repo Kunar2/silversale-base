@@ -1055,7 +1055,8 @@ input.quantity_minus {
 }
 
 .accept-btn,
-.delete-btn {
+.delete-btn,
+.discard-btn {
   width: 160px;
   height: 60px;
   padding: 12px;
@@ -1065,8 +1066,14 @@ input.quantity_minus {
   font-size: 1rem;
 }
 
+
+
 .accept-btn {
   background-color: green;
+}
+
+.discard-btn {
+  background-color: #713600;
 }
 
 .delete-btn {

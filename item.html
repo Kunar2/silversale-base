@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Home</title>
+    <title>Item</title>
     <link href="public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
     <script src="checkout.js"></script>
@@ -58,12 +58,8 @@
 
         <div class="item-header">
             <div class="item-category">Hats</div>
-            <div class="description-top">Name:</div>
-            <div class="description-main">Baseball Cap</div>
-            <div class="description-top">Description: </div>
-            <div class="description-main">Cap for sunny weathers.</div>
-
-            <div class="description-top">Rating:</div>
+            <div class="description-top">Baseball Cap</div>
+            <div class="item-manufacturer">Mikes Corp.</div>
             <div class="review-data">
                 <i class="fa-solid fa-star fa-xs"></i>
                 <i class="fa-solid fa-star fa-xs"></i>
@@ -73,20 +69,30 @@
                 <span class="description-main">265</span>
             </div>
 
-            <div class="description-top">Price:</div>
-            <div class="description-main">$25</div>
+            <div class="item-description">Cap for sunny weathers.</div> 
+
+            <div class="description-top">Size: </div>
+            <div class="description-main">
+                <button class="size-btn unpicked">S</button>
+                <button class="size-btn picked">M</button>
+                <button class="size-btn unpicked">L</button>
+            </div>
+
+            <div class="description-top">$25</div>
+
+            <div class="description-top">Available: 240</div>
 
             <div>
                 <form action="" method="GET">
                     <input type="hidden" name="action" value="add_cart">
-                    <button class="cart-button">Add to cart</button>
+                    <button class="cart-btn">Add to cart</button>
                 </form>
             </div>
 
             <div>
                 <form action="" method="GET">
                     <input type="hidden" name="action" value="add_favourite">
-                    <button class="cart-button">Favourite</button>
+                    <button class="cart-btn">Favourite</button>
                 </form>
             </div>
         </div>

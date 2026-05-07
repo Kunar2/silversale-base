@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Home</title>
+    <title>Checkout</title>
     <link href="public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
-    <script src="checkout.js"></script>
+    <script src="/scripts/js/checkout.js"></script>
 </head>
 
 <body>
@@ -61,10 +61,35 @@
         </div>
 
         <div>
-            <label for="recipient-name">Address:</label>
+            <label for="recipient-name">Recipient name:</label>
             <input id="recipient-name" class="credentials-input address-input" maxlength="25" type="text">
         </div>
 
+        <div>
+            <label for="country">Country:</label>
+            <input id="country" class="credentials-input address-input" maxlength="25" type="text">
+        </div>
+
+        <div>
+            <label for="city">City:</label>
+            <input id="city" class="credentials-input address-input" maxlength="25" type="text">
+        </div>
+
+        <div>
+            <label for="address-line-1">Address line 1:</label>
+            <input id="address-line-1" class="credentials-input address-input" maxlength="25" type="text">
+        </div>
+
+        <div>
+            <label for="address-line-2">Address line 2:</label>
+            <input id="address-line-2" class="credentials-input address-input" maxlength="25" type="text">
+        </div>
+
+        <div>
+            <label for="postal-code">Postal code:</label>
+            <input id="postal-code" class="credentials-input address-input" maxlength="5" type="text"
+                oninput="validateDigit(this, 'validateElementValue')">
+        </div>
 
     </div>
 
@@ -72,6 +97,7 @@
         <div>Subtotal: $120</div>
         <div>Items: $100</div>
         <div>Shipping tax: $20</div>
+        <div>Expected delivery: 20th of May</div>
         <a href="#checkout2">
             <button class="checkout2" type="button">Order</button>
         </a>

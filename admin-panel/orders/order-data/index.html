@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Home</title>
+    <title>View order</title>
     <link href="/public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
 
@@ -13,7 +13,6 @@
 
     <header>
         <div class="navigation-container">
-
             <a class="title" href="/home.html">Silversale</a>
 
             <a href="/catalogue.html" class="nav-item">
@@ -57,23 +56,95 @@
         </div>
     </header>
 
-
     <div class="item-data-box">
 
         <div class="item-data-header">
-            <h2>User data</h2>
+            <p>Order data</p>
         </div>
 
         <form class="item-data-form">
 
+            <div class="section-title">
+                <h2>Address data</h2>
+            </div>
+            
             <div class="form-grid">
+
                 <div class="form-group">
-                    <label>ID:</label>
-                    <input type="text" name="id">
+                    <label>Recipient name:</label>
+                    <input type="text" name="recipient_name">
                 </div>
 
                 <div class="form-group">
-                    <label>Userame:</label>
+                    <label>Country:</label>
+                    <input type="text" name="country">
+                </div>
+
+                <div class="form-group">
+                    <label>City:</label>
+                    <input type="text" name="city">
+                </div>
+
+                <div class="form-group">
+                    <label>Address line 1:</label>
+                    <input type="text" name="address_line_1">
+                </div>
+
+                <div class="form-group">
+                    <label>Address line 2:</label>
+                    <input type="text" name="address_line_2">
+                </div>
+
+                <div class="form-group">
+                    <label>Postal code:</label>
+                    <input type="text" name="postal_code">
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>General data</h2>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Status:</label>
+                    <input type="text" name="status">
+                </div>
+
+                <div class="form-group">
+                    <label>Shipping agent:</label>
+                    <input type="text" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Waybill number:</label>
+                    <input type="text" name="total_price">
+                </div>
+
+                <div class="form-group">
+                    <label>Date:</label>
+                    <input type="text" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Total price:</label>
+                    <input type="text" name="total_price">
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>User data</h2>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>User ID:</label>
+                    <input type="text" name="user_id">
+                </div>
+
+                <div class="form-group">
+                    <label>Username:</label>
                     <input type="text" name="username">
                 </div>
 
@@ -81,18 +152,12 @@
                     <label>Email:</label>
                     <input type="text" name="email">
                 </div>
-
-                <div class="form-group">
-                    <label>Role:</label>
-                    <input type="text" name="role">
-                </div>
             </div>
 
-            <h2 class="items-title">Items:</h2>
+            <p class="items-title">Items</p>
 
             <table class="admin-panel-table order-items-table">
             <tr>
-                <th class="edit-column"></th>
                 <th>Item_ID</th>
                 <th>Name</th>
                 <th>Quantity</th>
@@ -100,9 +165,6 @@
             </tr>
 
             <tr>
-                <td class="edit-column">
-                <a href="item-data?id=52">Edit <i class="fa-solid fa-pencil"></i></a>
-                </td>
                 <td>52</td>
                 <td>Hat</td>
                 <td>2</td>
@@ -110,9 +172,6 @@
             </tr>
 
             <tr>
-                <td class="edit-column">
-                <a href="item-data?id=61">Edit <i class="fa-solid fa-pencil"></i></a>
-                </td>
                 <td>61</td>
                 <td>Jacket</td>
                 <td>1</td>
@@ -120,11 +179,8 @@
             </tr>
             </table>
 
-
             <div class="item-data-buttons">
-                <button type="submit" class="accept-btn">Accept changes</button>
-                <button type="submit" class="discard-btn">Discard changes</button>
-                <button type="button" class="delete-btn">Delete item</button>
+                <button type="button" class="delete-btn">Delete order</button>
             </div>
 
         </form>

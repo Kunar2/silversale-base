@@ -68,13 +68,14 @@
 
             <div>
                 Category:
-                <select class="catalogue-option" name="sort_category" id="sort_category">
-                    <option value="any">Any</option>
-                    <option value="shoes">Shoes</option>
-                    <option value="jeans">Jeans</option>
-                    <option value="coats">Coats</option>
-                    <option value="shirts">Shirts</option>
-                </select>
+                <br>
+                <br>
+                <button class="category-btn unpicked">Any</button>
+                <button class="category-btn picked">Hats</button>
+                <button class="category-btn unpicked">Jeans</button>
+                <button class="category-btn unpicked">Shoes</button>
+                <button class="category-btn unpicked">Jackets</button>
+                <button class="category-btn unpicked">Coats</button>
             </div>
 
             <div>
@@ -94,6 +95,7 @@
         <div class="item-list">
             <a class="grid-item" href="item.html">
                 <img alt="item" src="public/item_1.png">
+                <p style="color: grey">Hats</p>
                 <p>Baseball Cap</p>
                 <p>$26</p>
                 <p>
@@ -104,13 +106,14 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unwatch">
-                    <button class="item-btn unpicked">Watch</button>
+                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
              </a>
             <a class="grid-item" href="item.html">
                 <img alt="item" src="public/item_1.png">
+                <p style="color: grey">Hats</p>
                 <p>Baseball Cap</p>
                 <p>$26</p>
                 <p>
@@ -121,14 +124,15 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unwatch">
-                    <button class="item-btn unpicked">Watch</button>
+                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
             </a>
 
             <a class="grid-item" href="item.html">
                 <img alt="item" src="public/item_1.png">
+                <p style="color: grey">Hats</p>
                 <p>Baseball Cap</p>
                 <p>$26</p>
                 <p>
@@ -139,14 +143,15 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unwatch">
-                    <button class="item-btn unpicked">Watch</button>
+                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
             </a>
 
             <a class="grid-item" href="item.html">
                 <img alt="item" src="public/item_1.png">
+                <p style="color: grey">Hats</p>
                 <p >Baseball Cap</p>
                 <p >$26</p>
                 <p >
@@ -157,8 +162,8 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unwatch">
-                    <button class="item-btn unpicked">Watch</button>
+                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
             </a>

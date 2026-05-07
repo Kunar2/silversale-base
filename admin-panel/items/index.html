@@ -3,17 +3,17 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Register</title>
+    <title>View items</title>
     <link href="/public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
-    <script src="http://127.0.0.1:5500//scripts/js/visibility.js"></script>
+
 </head>
 
 <body>
+
     <header>
         <div class="navigation-container">
-
-            <a class="title" href="home.html">Silversale</a>
+            <a class="title" href="/home.html">Silversale</a>
 
             <a href="/catalogue.html" class="nav-item">
                 <i class="fa-solid fa-list fa-lg"></i>
@@ -44,44 +44,76 @@
                 <span>Orders</span>
             </a>
 
-            <a href="/signin.html" class="nav-item active">
-                <i class="fa-solid fa-right-to-bracket fa-lg"></i>
-                <span>Sign in</span>
+            <a href="/account.html" class="nav-item">
+                <i class="fa-solid fa-user fa-lg"></i>
+                <span>(username)</span>
             </a>
 
+            <a href="/admin-panel" class="nav-item active">
+                <i class="fa-solid fa-gear fa-lg"></i>
+                <span>Admin panel</span>
+            </a>
         </div>
     </header>
 
-    <div class="middle-text-register">
+    <div class="admin-panel-box">
+        
+        <div class="admin-panel-main">
 
-        <form action="/website1/scripts/php/account-management.php" method="POST" class="input-form">
+            <span>Admin panel</span>
 
-            <input type="hidden" name="action" value="register">
+            <table class="admin-panel-table">
+            <tr>
+                <th class="edit-column"></th>
+                <th>Item ID</th>
+                <th>Name</th>
+                <th>Manufacturer</th>
+            </tr>
+
+            <tr>
+                <td class="edit-column">
+                <a href="item-data?id=1">Edit <i class="fa-solid fa-pencil"></i></a>
+                </td>
+                <td>1</td>
+                <td>Baseball Cap</td>
+                <td>Mikes Corp.</td>
+            </tr>
+
+            <tr>
+                <td class="edit-column">
+                <a href="item-data?id=2">Edit <i class="fa-solid fa-pencil"></i></a>
+                </td>
+                <td>2</td>
+                <td>White T-Shirt</td>
+                <td>Fashion et al.</td>
+            </tr>
+
+            <tr>
+                <td class="edit-column">
+                <a href="item-data?id=3">Edit <i class="fa-solid fa-pencil"></i></a>
+                </td>
+                <td>3</td>
+                <td>Denim Jacket</td>
+                <td>Mikes Corp.</td>
+            </tr>
+
+            <tr>
+                <td class="edit-column">
+                <a href="item-data?id=4">Edit <i class="fa-solid fa-pencil"></i></a>
+                </td>
+                <td>4</td>
+                <td>Cargo Pants</td>
+                <td>Cho Corp.</td>
+            </tr>
+            </table>
 
             <div>
-                <div class="data-type"><label for="email-input" class="data-type">Username</label></div>
-                <input type="text" id="usernameInput" name="username" class="input-field" placeholder="Username">
+            <a href="item-data">
+                <button type="submit" class="submit">Add item</button>
+            </a>
             </div>
 
-            <div>
-                <div class="data-type"><label for="email-input" class="data-type">Password</label></div>
-                <input type="password" id="password-input" name="password" class="input-field" placeholder="Password">
-                <button type="button" id="swap" class="inside" onclick="textVisibility()">Show</button>
-            </div>
-
-            <div>
-                <div class="data-type"><label for="email-input" class="data-type">Email</label></div>
-                <input type="text" id="email-input" name="email" class="input-field" placeholder="Email">
-            </div>
-
-            <div class="submit-section">
-                <button type="submit" class="submit" value="Submit">Submit</button>
-            </div>
-
-        </form>
-
-        <div><a href="signin.html">Already have an account?</a></div>
-
+        </div>
     </div>
 
     <footer>

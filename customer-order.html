@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>View order</title>
+    <title>Customer order data</title>
     <link href="/public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
-
 </head>
 
 <body>
@@ -39,7 +38,7 @@
                 <span>Cart</span>
             </a>
 
-            <a href="/orders.html" class="nav-item">
+            <a href="/orders.html" class="nav-item active">
                 <i class="fa-solid fa-box fa-lg"></i>
                 <span>Orders</span>
             </a>
@@ -47,11 +46,6 @@
             <a href="/account.html" class="nav-item">
                 <i class="fa-solid fa-user fa-lg"></i>
                 <span>(username)</span>
-            </a>
-
-            <a href="/admin-panel" class="nav-item active">
-                <i class="fa-solid fa-gear fa-lg"></i>
-                <span>Admin panel</span>
             </a>
         </div>
     </header>
@@ -133,27 +127,6 @@
                 </div>
             </div>
 
-            <div class="section-title">
-                <h2>User data</h2>
-            </div>
-
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>User ID:</label>
-                    <input type="text" name="user_id">
-                </div>
-
-                <div class="form-group">
-                    <label>Username:</label>
-                    <input type="text" name="username">
-                </div>
-
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="text" name="email">
-                </div>
-            </div>
-
             <p class="items-title">Items</p>
 
             <table class="admin-panel-table order-items-table">
@@ -188,13 +161,7 @@
             <div class="item-data-buttons">
                 <button type="submit" class="accept-btn">Export as PDF</button>
             </div>
-
-            <div class="item-data-buttons">
-                <button type="button" class="delete-btn">Delete order</button>
-            </div>
-
         </form>
-
     </div>
 
     <footer>

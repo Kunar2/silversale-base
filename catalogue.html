@@ -58,11 +58,12 @@
         <form action="" class="wall">
 
             <div>
-                Sort by:
-                <select class="catalogue-option" name="sort_type" id="sort_type">
+                <label for="sort_by">Sort by:</label>
+                <select class="catalogue-option" name="sort_type" id="sort_by">
                     <option value="name">Relevancy</option>
                     <option value="reviews">Popularity</option>
-                    <option value="price">Price</option>
+                    <option value="price">Price (ascending)</option>
+                    <option value="price">Price (descending)</option>
                 </select>
             </div>
 
@@ -79,8 +80,8 @@
             </div>
 
             <div>
-                Gender:
-                <select class="catalogue-option" name="sort_category" id="sort_category">
+                <label for="filter_gender">Gender:</label>
+                <select class="catalogue-option" name="sort_category" id="filter_gender">
                     <option value="any">Any</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -106,7 +107,7 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <form method="POST" action="/programme/${programme.id}/remove_cart">
                     <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
@@ -124,7 +125,7 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <form method="POST" action="/programme/${programme.id}/remove_cart">
                     <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
@@ -143,7 +144,7 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <form method="POST" action="/programme/${programme.id}/remove_cart">
                     <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
@@ -162,7 +163,7 @@
                 <i class="fa-regular fa-star fa-xs"></i>
                 <span> (234) </span></p>
                 <div class="item-btn-section">
-                    <form method="POST" action="/programme/${programme.id}/unorder">
+                    <form method="POST" action="/programme/${programme.id}/remove_cart">
                     <button class="item-btn unpicked">Add to cart</button>
                     </form>
                 </div>
@@ -178,16 +179,17 @@
                 <p>+1 234-567-8901 (General Questions)</p>
                 <p>+1 234-567-8901 (Customer Support)</p>
                 <p>ViveLeau@gmail.com</p>
+                <p><a href="/submit-query.html">Submit query</a></p>
             </div>
             <div class="footer-section">
                 <h3>Stay connected</h3>
                 <div class="social-icons">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a><i class="fa fa-facebook"></i></a>
+                    <a><i class="fa fa-youtube"></i></a>
+                    <a><i class="fa fa-instagram"></i></a>
+                    <a><i class="fa fa-twitter"></i></a>
                 </div>
-                <a href="#">About us</a>
+                <a href="/about-us.html">About us</a>
             </div>
         </div>
     </footer>

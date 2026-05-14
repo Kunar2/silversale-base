@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Cart</title>
-    <link href="public/css/style.css" rel="stylesheet" />
+    <title>Statistics</title>
+    <link href="/public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
 
 </head>
@@ -35,7 +35,7 @@
                 <span>Favourites</span>
             </a>
 
-            <a href="/cart.html" class="nav-item active">
+            <a href="/cart.html" class="nav-item">
                 <i class="fa-solid fa-bag-shopping fa-lg"></i>
                 <span>Cart</span>
             </a>
@@ -52,46 +52,52 @@
         </div>
     </header>
 
-    <div class="cart-box">
+    <div class="item-data-box">
 
-        <div class="cart-title">
-            Your bag
+        <div class="item-data-header">
+            <p>Submit inquiry</p>
         </div>
 
-        <div class="subtotal-box">
-            <a href="checkout.html"> <button class="checkout" type="button">Proceed to checkout</button></a>
-            <p class="subtotal-text">Subtotal: <span id="subtotal">$25</span></span> </p>
-            <p class="checkout-info">Shipping prices, taxes, and time of arrival will be specified at the checkout.</p>
+        <p> 
+            Email: al@gmail.com
+        </p>
+
+
+        <p style="margin-bottom: 10px;">
+            <label for="category">Category:</label>
+        </p>
+
+        <select class="catalogue-option" name="category" id="category">
+            <option value="general">General inquiry</option>
+            <option value="items">Items/products</option>
+            <option value="orders">Orders</option>
+            <option value="shipping">Shipping & delivery</option>
+            <option value="returns">Returns & refunds</option>
+            <option value="account">Account issues</option>
+            <option value="payment">Payment problems</option>
+            <option value="technical">Technical support</option>
+        </select>
+
+        <p>
+            Message:
+        </p>
+
+        <textarea class="inquiry-textbox" placeholder="Ask us a question!" id="inquiry"></textarea>
+
+        <div class="item-data-buttons">
+            <button type="submit" class="accept-btn" onclick="sendInquiry()">Send</button>
         </div>
 
-        <div class="cart-item" id="1">
-                <a href="item.html" style="text-decoration: none">
-                    <div class="cart-item-image"> <img alt="name" src="public/item_1.png"></div>
+        <script>
 
-                    <div class="cart-description">
-                        <p class="cart-item-name">Baseball Cap</p>
-                        <p class="cart-item-description">Baseball cap for sunny weather.</p>
-                    </div>
-                </a>
+            function sendInquiry() {
+                document.getElementById("inquiry").value = "";
+                alert("Message sent!");
+            }
 
-                <div class="quantity-box">
-                    <input class="quantity_minus" type="button" value="-" />
+        </script>
 
-                    <input class="quantity" type="text" value="1" />
-
-                    <input class="quantity_plus" type="button" value="+" />
-
-                    <div class="cart-item-price">
-                        $<span>25</span>
-                    </div>
-                </div>
-
-                <p class="remove"><a href="#delete_item">Remove</a></p>
-        </div>
     </div>
-
-
-
     <footer>
         <div class="footer-container">
 
@@ -116,7 +122,5 @@
     </footer>
 
 </body>
-
-
 
 </html>

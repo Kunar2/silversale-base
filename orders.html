@@ -53,6 +53,15 @@
     <div class="orders-box">
 
         <h1>Orders</h1>
+        
+        <p><label for="sort_type">Timeframe filter:</label></p>
+        <select class="catalogue-option" name="sort_type" id="sort_type">
+            <option value="all">All</option>
+            <option value="day">Today</option>
+            <option value="reviews">This week</option>
+            <option value="price">This month</option>
+            <option value="price">This year</option>
+        </select>
         <section class="order">
             <h2>Order ID: 2442FAF</h2>
 
@@ -80,11 +89,12 @@
             </div>
 
             <div class="order-info">
-            <p>Sum: $42</p>
-            <p>Date: 04/05/2026</p>
-            <p>Address: Samal-3, 25</p>
-            <p>Expected delivery: 24/05/2026</p>
-            <p>Status: Processing</p>
+                <p>Sum: $42</p>
+                <p>Date: 04/05/2026</p>
+                <p>Address: Samal-3, 25</p>
+                <p>Expected delivery: 24/05/2026</p>
+                <p>Status: Processing</p>
+                <p><a href="/customer-order.html">Expanded info</a></p>
             </div>
         </section>
 
@@ -113,6 +123,7 @@
                 <p>Address: Al-Farabi, 25</p>
                 <p>Expected delivery: 14/05/2026</p>
                 <p>Status: Shipped</p>
+                <p><a href="/customer-order.html">Expanded info</a></p>
             </div>
         </section>
     </div>
@@ -126,16 +137,17 @@
                 <p>+1 234-567-8901 (General Questions)</p>
                 <p>+1 234-567-8901 (Customer Support)</p>
                 <p>ViveLeau@gmail.com</p>
+                <p><a href="/submit-query.html">Submit query</a></p>
             </div>
             <div class="footer-section">
                 <h3>Stay connected</h3>
                 <div class="social-icons">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a><i class="fa fa-facebook"></i></a>
+                    <a><i class="fa fa-youtube"></i></a>
+                    <a><i class="fa fa-instagram"></i></a>
+                    <a><i class="fa fa-twitter"></i></a>
                 </div>
-                <a href="#">About us</a>
+                <a href="/about-us.html">About us</a>
             </div>
         </div>
     </footer>

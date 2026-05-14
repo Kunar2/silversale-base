@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Cart</title>
-    <link href="public/css/style.css" rel="stylesheet" />
+    <title>Statistics</title>
+    <link href="/public/css/style.css" rel="stylesheet" />
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/16066a3d22.js"></script>
 
 </head>
@@ -35,7 +35,7 @@
                 <span>Favourites</span>
             </a>
 
-            <a href="/cart.html" class="nav-item active">
+            <a href="/cart.html" class="nav-item">
                 <i class="fa-solid fa-bag-shopping fa-lg"></i>
                 <span>Cart</span>
             </a>
@@ -52,46 +52,18 @@
         </div>
     </header>
 
-    <div class="cart-box">
+    <div class="history-data-box">
 
-        <div class="cart-title">
-            Your bag
+        <div class="item-data-header">
+            <p>Our history</p>
         </div>
 
-        <div class="subtotal-box">
-            <a href="checkout.html"> <button class="checkout" type="button">Proceed to checkout</button></a>
-            <p class="subtotal-text">Subtotal: <span id="subtotal">$25</span></span> </p>
-            <p class="checkout-info">Shipping prices, taxes, and time of arrival will be specified at the checkout.</p>
-        </div>
+        <p>Silversale was founded in 2026 with the goal of creating an accessible and 
+            user-friendly online shopping platform. The company focuses on providing 
+            clothing and fashion items through a modern e-commerce experience with convenient ordering and delivery systems.
+        </p>
 
-        <div class="cart-item" id="1">
-                <a href="item.html" style="text-decoration: none">
-                    <div class="cart-item-image"> <img alt="name" src="public/item_1.png"></div>
-
-                    <div class="cart-description">
-                        <p class="cart-item-name">Baseball Cap</p>
-                        <p class="cart-item-description">Baseball cap for sunny weather.</p>
-                    </div>
-                </a>
-
-                <div class="quantity-box">
-                    <input class="quantity_minus" type="button" value="-" />
-
-                    <input class="quantity" type="text" value="1" />
-
-                    <input class="quantity_plus" type="button" value="+" />
-
-                    <div class="cart-item-price">
-                        $<span>25</span>
-                    </div>
-                </div>
-
-                <p class="remove"><a href="#delete_item">Remove</a></p>
-        </div>
     </div>
-
-
-
     <footer>
         <div class="footer-container">
 
@@ -116,7 +88,5 @@
     </footer>
 
 </body>
-
-
 
 </html>

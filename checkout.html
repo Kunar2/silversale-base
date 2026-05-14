@@ -61,35 +61,38 @@
         </div>
 
         <div>
-            <label for="recipient-name">Recipient name:</label>
+            <i class="fa-solid fa-star fa-xs"></i><label for="recipient-name">Recipient name:</label>
             <input id="recipient-name" class="credentials-input address-input" maxlength="25" type="text">
         </div>
 
         <div>
-            <label for="country">Country:</label>
+            <i class="fa-solid fa-star fa-xs"></i><label for="country">Country:</label>
             <input id="country" class="credentials-input address-input" maxlength="25" type="text">
         </div>
 
         <div>
-            <label for="city">City:</label>
+            <i class="fa-solid fa-star fa-xs"></i><label for="city">City:</label>
             <input id="city" class="credentials-input address-input" maxlength="25" type="text">
         </div>
 
         <div>
-            <label for="address-line-1">Address line 1:</label>
+            <i class="fa-solid fa-star fa-xs"></i><label for="address-line-1">Address line 1:</label>
             <input id="address-line-1" class="credentials-input address-input" maxlength="25" type="text">
         </div>
 
         <div>
-            <label for="address-line-2">Address line 2:</label>
+            <i class="fa-regular fa-star fa-xs"></i><label for="address-line-2">Address line 2:</label>
             <input id="address-line-2" class="credentials-input address-input" maxlength="25" type="text">
         </div>
 
         <div>
-            <label for="postal-code">Postal code:</label>
+            <i class="fa-solid fa-star fa-xs"></i><label for="postal-code">Postal code:</label>
             <input id="postal-code" class="credentials-input address-input" maxlength="5" type="text"
                 oninput="validateDigit(this, 'validateElementValue')">
         </div>
+
+        <div><i class="fa-solid fa-star fa-xs"></i> = required field</div>
+        <div><i class="fa-regular fa-star fa-xs"></i> = optional field</div>
 
     </div>
 
@@ -98,7 +101,7 @@
         <div>Items: $100</div>
         <div>Shipping tax: $20</div>
         <div>Expected delivery: 20th of May</div>
-        <a href="#checkout2">
+        <a href="/orders.html">
             <button class="checkout2" type="button">Order</button>
         </a>
     </div>
@@ -106,7 +109,7 @@
         <div class="cc-box">
 
             <div class="payment-title">
-                <span>Credit card payment</span>
+                <i class="fa-solid fa-star fa-xs"></i><span>Credit card payment</span>
             </div>
 
             <div class=cc-section>
@@ -160,16 +163,17 @@
                 <p>+1 234-567-8901 (General Questions)</p>
                 <p>+1 234-567-8901 (Customer Support)</p>
                 <p>ViveLeau@gmail.com</p>
+                <p><a href="/submit-query.html">Submit query</a></p>
             </div>
             <div class="footer-section">
                 <h3>Stay connected</h3>
                 <div class="social-icons">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a><i class="fa fa-facebook"></i></a>
+                    <a><i class="fa fa-youtube"></i></a>
+                    <a><i class="fa fa-instagram"></i></a>
+                    <a><i class="fa fa-twitter"></i></a>
                 </div>
-                <a href="#">About us</a>
+                <a href="/about-us.html">About us</a>
             </div>
         </div>
     </footer>

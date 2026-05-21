@@ -1,0 +1,51 @@
+address_id,order_id,recipient_name,recipient_phone,country,city,address_line_1,address_line_2,postal_code
+1,1,Theo,+447567811620,Germany,Munich,"Oxford Road, 161",,12214
+2,2,John,+447885248288,Sweden,Gothenburg,"King Street, 20",flat 43,38333
+3,3,Jack,+447410323201,France,Paris,"Baker Street, 15",,15287
+4,4,Sandra,+447496540480,Italy,Milan,"Station Road, 56",,15738
+5,5,Evie,+447495390862,Spain,Madrid,"Market Lane, 47",,48340
+6,6,Amelia,+447095461841,France,Lyon,"Oxford Road, 61",flat 33,92852
+7,7,Daniel,+447469225074,Sweden,Stockholm,"Market Lane, 40",,29045
+8,8,Chloe,+447288719741,UK,Manchester,"Market Lane, 65",,80217
+9,9,Arthur,+447471351511,Germany,Munich,"Baker Street, 22",apartment 74,61243
+10,10,Noah,+447763091135,Netherlands,Amsterdam,"High Street, 93",flat 43,39733
+11,11,Ruby,+447434745597,Sweden,Stockholm,"Queen Road, 164",flat 18,37726
+12,12,Chloe,+447960680012,France,Paris,"King Street, 157",,49635
+13,13,Sophia,+447567601630,Sweden,Gothenburg,"Church Street, 23",apartment 39,81739
+14,14,Sophia,+447877845332,Germany,Munich,"Garden Lane, 91",,59797
+15,15,Arthur,+447894327702,Sweden,Gothenburg,"High Street, 41",apartment 18,27774
+16,16,Ethan,+447362555668,Spain,Madrid,"Queen Road, 118",apartment 31,49696
+17,17,James,+447647722708,Spain,Madrid,"Station Road, 105",apartment 26,81760
+18,18,Max,+447450462394,Germany,Berlin,"Queen Road, 178",,45996
+19,19,Sandra,+447873072696,France,Paris,"High Street, 35",flat 45,51197
+20,20,Leo,+447323029468,Spain,Madrid,"High Street, 2",flat 23,37463
+21,21,Oscar,+447501654969,Italy,Milan,"Park Road, 81",flat 4,80410
+22,22,Lucas,+447216549333,Sweden,Stockholm,"Oxford Road, 44",apartment 50,32394
+23,23,Ethan,+447200913036,France,Paris,"Victoria Avenue, 155",,41916
+24,24,Noah,+447486538982,Germany,Berlin,"Baker Street, 54",apartment 81,17139
+25,25,Oliver,+447402412189,France,Lyon,"Bridge Street, 100",flat 51,21494
+26,26,Amelia,+447494081875,France,Paris,"Garden Lane, 118",,13563
+27,27,Leo,+447696746571,Germany,Berlin,"Artillerigatan, 112",flat 45,23810
+28,28,Benjamin,+447217199325,Germany,Berlin,"River Walk, 90",apartment 28,56973
+29,29,Sophia,+447324581156,Germany,Berlin,"Oxford Road, 79",apartment 32,41695
+30,30,Leo,+447274523702,France,Paris,"Oxford Road, 111",apartment 34,20918
+31,31,Arthur,+447881395228,UK,London,"River Walk, 21",flat 60,89266
+32,32,Oliver,+447364759790,Sweden,Gothenburg,"High Street, 27",,56478
+33,33,John,+447774259925,Italy,Milan,"Aldermanbury, 172",,25070
+34,34,Freya,+447783121404,Germany,Berlin,"Bridge Street, 8",flat 32,43295
+35,35,Oscar,+447378554541,Sweden,Stockholm,"Church Street, 95",apartment 41,90430
+36,36,Lucas,+447096248336,UK,Birmingham,"Baker Street, 129",,30760
+37,37,Mia,+447213612199,France,Lyon,"King Street, 11",flat 12,69690
+38,38,Benjamin,+447074050641,Sweden,Gothenburg,"King Street, 105",apartment 48,86436
+39,39,Oscar,+447028589420,UK,Birmingham,"Church Street, 38",,56243
+40,40,Isla,+447633942449,UK,Manchester,"Garden Lane, 113",,46610
+41,41,Ava,+447781485957,France,Lyon,"Oxford Road, 126",,63909
+42,42,Grace,+447923353064,UK,Birmingham,"King Street, 96",flat 57,69872
+43,43,Amelia,+447951462350,Sweden,Gothenburg,"Garden Lane, 99",apartment 51,69274
+44,44,Benjamin,+447621827069,Germany,Berlin,"Victoria Avenue, 139",,17718
+45,45,Isla,+447997415518,UK,London,"Oxford Road, 26",apartment 2,88680
+46,46,Chloe,+447029457833,Germany,Berlin,"Artillerigatan, 17",apartment 88,67312
+47,47,Noah,+447288424033,France,Lyon,"Station Road, 74",apartment 4,14755
+48,48,Mia,+447539486529,Germany,Munich,"High Street, 147",apartment 7,96073
+49,49,Chloe,+447834224770,Germany,Berlin,"King Street, 74",,57366
+50,50,Freya,+447318992915,France,Lyon,"Baker Street, 56",apartment 1,11576

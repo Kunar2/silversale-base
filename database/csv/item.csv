@@ -1,0 +1,49 @@
+name,manufacturer,description,category_id,gender,price,sale_price,reviews,rating,image,listed
+Cotton Polo Shirt,Mikes Corp,Classic cotton polo shirt perfect for casual wear.,3,Male,42.00,35.70,63,3.4,/assets/items/Cotton_Polo_Shirt.png,True
+Chunky White Sneakers,Blue Harbor,Comfortable chunky sneakers designed for daily activities.,4,Female,68.00,51.00,960,3.6,/assets/items/Chunky_White_Sneakers.png,True
+Oversized White Tee,Oak & Pine,Relaxed oversized tee in soft cotton for everyday comfort.,3,Unisex,32.00,24.00,697,3.3,/assets/items/Oversized_White_Tee.png,True
+Platform Sandals,Urban Pulse,Trendy platform sandals with cushioned soles for comfort.,4,Female,58.00,40.60,1032,3.8,/assets/items/Platform_Sandals.png,True
+Short Sleeve Linen Shirt,West End Co,Lightweight linen shirt ideal for warm weather.,3,Male,38.00,28.50,52,3.4,/assets/items/Short_Sleeve_Linen_Shirt.png,True
+Leather Slide Sandals,West End Co,Soft leather slides with cushioned footbed for all-day wear.,4,Female,45.00,31.50,752,4.3,/assets/items/Leather_Slide_Sandals.png,True
+Wide-Leg Cropped Jeans,Thread Theory,Stylish wide-leg cropped jeans with a modern silhouette.,2,Male,56.00,39.20,1302,3.3,/assets/items/Wide_Leg_Cropped_Jeans.png,True
+Ankle Grazer Jeans,Summit Apparel,Contemporary ankle-length jeans with stretch fabric.,2,Female,62.00,46.50,171,4.2,/assets/items/Ankle_Grazer_Jeans.png,True
+Mesh Trucker Hat,Golden Stitch,Breathable mesh trucker cap with adjustable back.,1,Female,24.00,18.00,26,3.4,/assets/items/Mesh_Trucker_Hat.png,True
+Resort Print Shirt,Mikes Corp,Lightweight tropical print shirt ideal for vacation wear.,3,Female,48.00,33.60,972,3.7,/assets/items/Resort_Print_Shirt.png,True
+Visor Cap,Thread Theory,Classic visor cap suitable for outdoor activities.,1,Unisex,22.00,16.50,94,4.9,/assets/items/Visor_Cap.png,True
+Cotton Dad Cap,Golden Stitch,Vintage-style cotton dad cap with embroidered front.,1,Male,26.00,19.50,40,4.4,/assets/items/Cotton_Dad_Cap.png,True
+Foldable Travel Hat,Golden Stitch,Packable hat perfect for travelers and outdoor adventures.,1,Male,32.00,22.40,1393,3.2,/assets/items/Foldable_Travel_Hat.png,True
+Open-Toe Mule Sandals,Summit Apparel,Comfortable mules with open toe design for easy wear.,4,Male,42.00,29.40,869,4.7,/assets/items/Open_Toe_Mule_Sandals.png,True
+Waffle Knit T-Shirt,Oak & Pine,Textured waffle knit tee in breathable cotton.,3,Male,34.00,24.50,593,4.2,/assets/items/Waffle_Knit_T_Shirt.png,True
+Light Wash Straight Jeans,Oak & Pine,Classic light-wash jeans with a straight leg fit.,2,Female,52.00,36.40,595,3.9,/assets/items/Light_Wash_Straight_Jeans.png,True
+Slim Tapered Jeans,Summit Apparel,Modern slim-tapered jeans made from soft cotton blend.,2,Unisex,58.00,40.60,365,3.5,/assets/items/Slim_Tapered_Jeans.png,True
+Sport Running Shoes,Thread Theory,Lightweight running shoes with responsive cushioning.,4,Male,78.00,54.60,187,4.3,/assets/items/Sport_Running_Shoes.png,True
+Relaxed Fit Loose Jeans,Mikes Corp,Comfortable loose-fit jeans perfect for all-day wear.,2,Male,54.00,37.80,1237,4.7,/assets/items/Relaxed_Fit_Loose_Jeans.png,True
+Crochet Summer Beanie,Blue Harbor,Lightweight crochet beanie ideal for warm months.,1,Male,26.00,19.50,843,3.6,/assets/items/Crochet_Summer_Beanie.png,True
+White Denim Jeans,Northline,Classic white denim with a modern slim fit.,2,Female,56.00,39.20,723,3.4,/assets/items/White_Denim_Jeans.png,True
+Sleeveless Tank Top,Northline,Simple sleeveless tank perfect for layering.,3,Unisex,24.00,17.50,408,4.8,/assets/items/Sleeveless_Tank_Top.png,True
+Denim Short Sleeve Shirt,West End Co,Casual denim shirt with short sleeves for spring wear.,3,Unisex,44.00,30.80,564,3.7,/assets/items/Denim_Short_Sleeve_Shirt.png,True
+Slip-On Loafers,Summit Apparel,Classic slip-on loafers with comfortable leather construction.,4,Female,64.00,44.80,1420,4.3,/assets/items/Slip_On_Loafers.png,True
+Straw Bucket Hat,Northline,Natural straw bucket hat perfect for sun protection.,1,Male,28.00,19.60,1379,3.7,/assets/items/Straw_Bucket_Hat.png,True
+Floral Print Shirt,Oak & Pine,Vibrant floral print button-up shirt for warm weather.,3,Female,46.00,32.20,166,3.7,/assets/items/Floral_Print_Shirt.png,True
+Striped Button-Up Shirt,Mikes Corp,Classic striped shirt with mother-of-pearl buttons.,3,Male,40.00,28.00,781,4.0,/assets/items/Striped_Button_Up_Shirt.png,True
+Raffia Fedora,Oak & Pine,Lightweight raffia fedora with adjustable band.,1,Unisex,34.00,24.50,1266,3.9,/assets/items/Raffia_Fedora.png,True
+Tropical Print Bucket Hat,Oak & Pine,Fun tropical print bucket hat for beach outings.,1,Unisex,30.00,21.00,203,4.9,/assets/items/Tropical_Print_Bucket_Hat.png,True
+Graphic Oversized Tee,Golden Stitch,Bold graphic print on oversized fit tee.,3,Female,28.00,19.60,641,4.1,/assets/items/Graphic_Oversized_Tee.png,True
+Wide Brim Sun Hat,Golden Stitch,Wide-brimmed sun hat with UV protection.,1,Female,32.00,22.40,710,4.0,/assets/items/Wide_Brim_Sun_Hat.png,True
+Low-Top Skate Shoes,NovaWear,Durable low-top skate shoes with grip sole.,4,Unisex,62.00,43.40,533,4.1,/assets/items/Low_Top_Skate_Shoes.png,True
+Stretch Skinny Jeans,Golden Stitch,Figure-hugging skinny jeans with stretch fabric.,2,Male,48.00,33.60,265,3.6,/assets/items/Stretch_Skinny_Jeans.png,True
+Linen Baseball Cap,Golden Stitch,Breathable linen baseball cap for summer style.,1,Unisex,28.00,19.60,965,4.7,/assets/items/Linen_Baseball_Cap.png,True
+Canvas Slip-On Sneakers,Mikes Corp,Casual canvas sneakers with elastic sides.,4,Male,52.00,36.40,45,3.9,/assets/items/Canvas_Slip_On_Sneakers.png,True
+Chambray Shirt,Oak & Pine,Lightweight chambray shirt perfect for casual layering.,3,Unisex,44.00,30.80,1348,4.6,/assets/items/Chambray_Shirt.png,True
+Drawstring Denim Pants,Northline,Comfortable denim with drawstring waist and taper.,2,Unisex,54.00,37.80,1464,3.5,/assets/items/Drawstring_Denim_Pants.png,True
+Fisherman Sandals,Mikes Corp,Classic fisherman-style sandals with strappy design.,4,Unisex,38.00,26.60,475,3.5,/assets/items/Fisherman_Sandals.png,True
+Sailor Cap,West End Co,Nautical-inspired sailor cap with adjustable strap.,1,Female,24.00,16.80,966,4.4,/assets/items/Sailor_Cap.png,True
+Vintage Blue Bootcut Jeans,Northline,Retro-inspired bootcut jeans in vintage blue wash.,2,Female,58.00,40.60,983,4.6,/assets/items/Vintage_Blue_Bootcut_Jeans.png,True
+Distressed Denim Jeans,Blue Harbor,Trendy distressed denim with ripped detailing.,2,Male,50.00,35.00,506,3.3,/assets/items/Distressed_Denim_Jeans.png,True
+Strappy Flat Sandals,Urban Pulse,Minimalist flat sandals with delicate straps.,4,Unisex,46.00,32.20,1157,4.3,/assets/items/Strappy_Flat_Sandals.png,True
+Carpenter Jeans,Thread Theory,Utility-style jeans with multiple pockets and reinforced seams.,2,Unisex,56.00,39.20,622,4.8,/assets/items/Carpenter_Jeans.png,True
+Canvas Boonie Hat,Northline,Durable canvas military-style boonie hat.,1,Female,26.00,18.20,911,4.1,/assets/items/Canvas_Boonie_Hat.png,True
+Knit Walking Shoes,West End Co,Supportive walking shoes with knit upper for breathability.,4,Male,68.00,47.60,214,3.9,/assets/items/Knit_Walking_Shoes.png,True
+High-Waisted Mom Jeans,Blue Harbor,Trendy high-waisted jeans with vintage-inspired fit.,2,Unisex,60.00,42.00,848,4.9,/assets/items/High_Waisted_Mom_Jeans.png,True
+Cuban Collar Shirt,Northline,Classic Cuban collar shirt with short sleeves.,3,Female,42.00,29.40,1361,3.6,/assets/items/Cuban_Collar_Shirt.png,True
+Espadrille Flats,NovaWear,Canvas espadrilles with rope sole for casual elegance.,4,Unisex,54.00,37.80,1368,4.8,/assets/items/Espadrille_Flats.png,True

@@ -1,0 +1,16 @@
+query_id,user_email,category,message,date
+1,chloe@gmail.com,payment,Can I use a different payment method?,2026-03-22
+2,noah@gmail.com,items,Will this product be restocked soon?,2026-04-24
+3,emma@gmail.com,orders,Can I cancel my recent order?,2026-04-28
+4,chloe@gmail.com,returns,How do I return an item?,2026-01-18
+5,chloe@gmail.com,returns,Can I exchange an item for a different size?,2026-02-05
+6,grace@gmail.com,returns,When will my refund be processed?,2026-01-07
+7,emma@gmail.com,technical,I cannot add items to my cart.,2026-04-27
+8,emma@gmail.com,items,Will this product be restocked soon?,2026-04-21
+9,mia@gmail.com,items,Will this product be restocked soon?,2026-03-29
+10,smith@gmail.com,orders,I need help checking my order status.,2026-02-02
+11,grace@gmail.com,payment,Can I use a different payment method?,2026-02-23
+12,sandra@gmail.com,items,Do you have more photos of this item?,2026-04-06
+13,sandra@gmail.com,technical,The website is showing an error.,2026-01-23
+14,mia@gmail.com,general,Do you have a physical store?,2026-05-01
+15,sandra@gmail.com,technical,The website is showing an error.,2026-03-24

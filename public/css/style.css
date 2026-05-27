@@ -748,6 +748,12 @@ form[action^="favourites"] .cart-btn {
   border: 1px solid #ccc;
 }
 
+.cart-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
 @media (max-width: 768px) {
   .item-container {
     grid-template-columns: 1fr;
@@ -1027,6 +1033,8 @@ form[action^="favourites"] .cart-btn {
   max-width: 1500px;
   grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
   gap: 2rem;
+  background-color: white;
+  padding: 30px;
 }
 
 @media (max-width: 768px) {
@@ -1116,14 +1124,14 @@ form[action^="favourites"] .cart-btn {
   font-size: 1.6rem;
 }
 
-input.quantity_plus {
+.quantity-plus {
   margin-left: 10px;
   width: 45px;
   height: 45px;
   font-size: 1.6rem;
 }
 
-input.quantity_minus {
+.quantity-minus {
   margin-right: 10px;
   width: 45px;
   height: 45px;
@@ -1414,12 +1422,23 @@ input.quantity_minus {
   flex-direction: column;
 }
 
+.form-group-img {
+  font-size: 1.6rem;
+}
+
 .form-group label {
   margin-bottom: 6px;
   font-size: 1.6rem;
 }
 
 .form-group input {
+  height: 50px;
+  border: 1px solid #777;
+  font-size: 1.6rem;
+  padding: 0 10px 0 10px;
+}
+
+.form-group select {
   height: 50px;
   border: 1px solid #777;
   font-size: 1.6rem;

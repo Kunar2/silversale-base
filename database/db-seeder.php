@@ -15,18 +15,18 @@ $db = Database::getConnection();
 
 // CSV imports
 $csvImports = [
-    // ['/csv/item.csv',           'silversale.item'],
-    // ['/csv/users.csv',          'silversale.users'],
-    // ['/csv/user_address.csv',   'silversale.user_address'],
-    // ['/csv/inventory.csv',      'silversale.inventory'],
-    // ['/csv/favourite.csv',      'silversale.favourite'],
-    // ['/csv/cart.csv',           'silversale.cart'],
-    // ['/csv/cart_item.csv',      'silversale.cart_item'],
-    // ['/csv/order_main.csv',     'silversale.order_main'],
-    // ['/csv/order_item.csv',     'silversale.order_item'],
-    // ['/csv/order_address.csv',  'silversale.order_address'],
-    // ['/csv/query.csv',          'silversale.query'],
-    // ['/csv/category.csv',       'silversale.category'],
+    ['/csv/category.csv',       'category'],
+    ['/csv/item.csv',           'item'],
+    ['/csv/users.csv',          'users'],
+    ['/csv/user_address.csv',   'user_address'],
+    ['/csv/inventory.csv',      'inventory'],
+    ['/csv/favourite.csv',      'favourite'],
+    ['/csv/cart.csv',           'cart'],
+    ['/csv/cart_item.csv',      'cart_item'],
+    ['/csv/order_main.csv',     'order_main'],
+    ['/csv/order_item.csv',     'order_item'],
+    ['/csv/order_address.csv',  'order_address'],
+    ['/csv/query.csv',          'query'],
 ];
 
 foreach ($csvImports as [$file, $table]) {
@@ -40,15 +40,15 @@ function importCsvFile($db, $csvFile, $tableName) {
     }
 
     $idColumns = [
-        'silversale.users'         => 'user_id',
-        'silversale.category'      => 'category_id',
-        'silversale.item'          => 'item_id',
-        'silversale.inventory'     => 'unit_id',
-        'silversale.cart'          => 'cart_id',
-        'silversale.order_main'    => 'order_id',
-        'silversale.order_address' => 'address_id',
-        'silversale.query'         => 'query_id',
-        'silversale.user_address'  => 'address_id',
+        'users'         => 'user_id',
+        'category'      => 'category_id',
+        'item'          => 'item_id',
+        'inventory'     => 'unit_id',
+        'cart'          => 'cart_id',
+        'order_main'    => 'order_id',
+        'order_address' => 'address_id',
+        'query'         => 'query_id',
+        'user_address'  => 'address_id',
     ];
 
     $db->exec("TRUNCATE TABLE $tableName RESTART IDENTITY CASCADE;");

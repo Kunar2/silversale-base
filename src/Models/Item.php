@@ -13,20 +13,203 @@ class Item
         $this->pdo = $pdo;
     }
 
+    public function updateItem($itemId, $data)
+    {
+        $stmt = $this->pdo->prepare(
+            "UPDATE item
+            SET
+                name = ?,
+                manufacturer = ?,
+                description = ?,
+                category_id = ?,
+                gender = ?,
+                price = ?,
+                sale_price = ?,
+                image = COALESCE(?, image),
+                listed = ?
+            WHERE item_id = ?"
+        );
+
+        return $stmt->execute([
+            $data['name'],
+            $data['manufacturer'],
+            $data['description'],
+            $data['category'],
+            $data['gender'],
+            $data['price'],
+            $data['sale_price'],
+            $data['image'],
+            $data['listed'],
+            $itemId
+        ]);
+    }
+
+    public function deleteItem($itemId)
+    {
+        $stmt = $this->pdo->prepare(
+            "DELETE FROM item
+            WHERE item_id = ?"
+        );
+
+        return $stmt->execute([$itemId]);
+    }
+
+    public function insertItem($data)
+    {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO item (
+                name,
+                manufacturer,
+                description,
+                category_id,
+                gender,
+                price,
+                sale_price,
+                image,
+                listed,
+                reviews,
+                rating
+            )
+            VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            )"
+        );
+
+        $rating = 0;
+        $reviews = 0;
+
+        $stmt->execute([
+            $data['name'],
+            $data['manufacturer'],
+            $data['description'],
+            $data['category'],
+            $data['gender'],
+            $data['price'],
+            $data['sale_price'],
+            $data['image'],
+            $data['listed'],
+            $reviews,
+            $rating,
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
+
+    public function getItemAdminSnapshot()
+    {
+        $stmt = $this->pdo->query('SELECT item_id, name, manufacturer FROM item');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getItemAdminDetailed($itemId)
+    {
+        $stmt = $this->pdo->prepare(
+            "SELECT item.*, 
+            inventory.*,
+            category.name AS category
+            FROM item
+
+            JOIN category
+            ON item.category_id = category.category_id 
+            
+            JOIN inventory 
+            ON inventory.item_id = item.item_id
+
+            WHERE item.item_id = ?"
+        );
+
+        $stmt->execute([$itemId]);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $item = null;
+
+        foreach ($rows as $row) {
+
+            if ($item === null) {
+                $item = [
+                    'item_id' => $row['item_id'],
+                    'name' => $row['name'],
+                    'manufacturer' => $row['manufacturer'],
+                    'description' => $row['description'],
+                    'category' => $row['category'],
+                    'gender' => $row['gender'],
+                    'sale_price' => $row['sale_price'],
+                    'price' => $row['price'],
+                    'image' => $row['image'],
+                    'listed' => $row['listed'],
+
+                    'inventory' => [],
+                ];
+            }
+
+            $item['inventory'][] = [
+                'unit_id' => $row['unit_id'],
+                'size' => $row['size'],
+                'quantity' => $row['quantity'],
+            ];
+        }
+
+    return $item;
+    }
+
     public function getAll()
     {
-        $stmt = $this->pdo->query('SELECT * FROM silversale.item');
+        $stmt = $this->pdo->query('SELECT * FROM item');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getFiltered($filters)
+    {
+        $sql = "
+            SELECT item.*, category.name AS category
+            FROM item
+            JOIN category ON item.category_id = category.category_id
+            WHERE item.listed = true
+        ";
+
+        $params = [];
+
+        if (!empty($filters['category'])) {
+            $placeholders = implode(',', array_fill(0, count($filters['category']), '?'));
+
+            $sql .= " AND category.name IN ($placeholders)";
+
+            foreach ($filters['category'] as $category) {
+                $params[] = $category;
+            }
+        }
+
+        if (!empty($filters['gender'])) {
+            $sql .= " AND item.gender = ?";
+            $params[] = $filters['gender'];
+        }
+
+        if (!empty($filters['max_price']) && $filters['max_price'] !== "any") {
+            $sql .= " AND item.sale_price <= ?";
+            $params[] = $filters['max_price'];
+        }
+
+        if (!empty($filters['search'])) {
+            $sql .= " AND item.name ILIKE ?";
+            $params[] = '%' . $filters['search'] . '%';
+        }
+
+        $sql .= " ORDER BY item.item_id DESC";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getItem($id)
     {
         $stmt = $this->pdo->prepare(
-            "SELECT silversale.item.*, 
-            silversale.category.name AS category
-            FROM silversale.item
-            JOIN silversale.category
-            ON silversale.item.category_id = silversale.category.category_id 
+            "SELECT item.*, 
+            category.name AS category
+            FROM item
+            JOIN category
+            ON item.category_id = category.category_id 
             WHERE item_id = ?"
         );
 
@@ -38,7 +221,7 @@ class Item
     public function getInventoryByItemId($id)
     {
         $stmt = $this->pdo->prepare(
-        "SELECT * FROM silversale.inventory WHERE item_id = ?"
+            "SELECT * FROM inventory WHERE item_id = ?"
         );
 
         $stmt->execute([$id]);
@@ -51,7 +234,7 @@ class Item
         $stmt = $this->pdo->prepare("
             SELECT *,
                 (rating * reviews) AS popularity
-            FROM silversale.item
+            FROM item
             ORDER BY popularity DESC
             LIMIT ?
         ");
@@ -71,8 +254,8 @@ class Item
                 c.name,
                 i.*,
                 (i.rating * i.reviews) AS popularity
-            FROM silversale.category c
-            JOIN silversale.item i
+            FROM category c
+            JOIN item i
                 ON c.category_id = i.category_id
             ORDER BY
                 c.category_id,
@@ -91,7 +274,7 @@ class Item
     {
         $stmt = $this->pdo->prepare("
             SELECT *
-            FROM silversale.item
+            FROM item
             ORDER BY reviews ASC
             LIMIT ?
         ");
@@ -101,6 +284,29 @@ class Item
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function insertUnit($itemId, $size, $quantity)
+    {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO inventory (item_id, size, quantity) VALUES (?, ?, ?)
+        ");
+
+        return $stmt->execute([$itemId, $size, $quantity]);
+    }
+
+    public function updateUnitQuantity($unitId, $quantity)
+    {
+        $stmt = $this->pdo->prepare("
+            UPDATE inventory
+            SET quantity = ?
+            WHERE unit_id = ?
+        ");
+
+        return $stmt->execute([
+            $quantity,
+            $unitId
+        ]);
     }
 
 }

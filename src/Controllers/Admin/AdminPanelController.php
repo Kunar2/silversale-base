@@ -7,7 +7,6 @@ class AdminPanelController extends BaseController
 {
     public function index()
     {
-
         $data = [
             'pageTitle' => 'Admin',
             'currentPage' => 'admin-panel' 

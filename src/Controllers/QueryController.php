@@ -7,7 +7,6 @@ class QueryController extends BaseController
 {
     public function index()
     {
-
         $data = [
             'pageTitle' => 'Query',
             'currentPage' => 'submit-query' 

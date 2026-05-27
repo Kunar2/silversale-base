@@ -13,6 +13,12 @@ require_once __DIR__ . '/../partials/navbar.php';
 
         <a class="grid-item" href="catalogue/item/<?= $favourite['item_id'] ?>">
 
+            <form action="/favourites/remove/<?= $favourite['item_id'] ?>" method="POST">
+                <button type="submit" class="favourite-heart picked">
+                    <i class="fa-solid fa-heart fa-lg"></i>
+                </button>
+            </form>
+
             <img alt="item" src="<?= $favourite['image'] ?>">
             <p class="item-price"> 
 

@@ -29,37 +29,37 @@ require_once __DIR__ . '/../partials/navbar.php';
 
         <?php foreach ($popularItems as $item): ?>
 
-                <a class="grid-item" href="catalogue/item/<?= $item['item_id'] ?>">
+            <a class="grid-item" href="catalogue/item/<?= $item['item_id'] ?>">
 
-                    <img alt="item" src="<?= $item['image'] ?>">
-                    <p class="item-price"> 
-                    <?php 
-                        if ($item['sale_price'] === $item['price']) {
+                <img alt="item" src="<?= $item['image'] ?>">
+                <p class="item-price"> 
+                <?php 
+                    if ($item['sale_price'] === $item['price']) {
 
-                            echo "<span class='item-price'>$" . $item['price'] . "</span>";
+                        echo "<span class='item-price'>$" . $item['price'] . "</span>";
 
-                        } else {
+                    } else {
 
-                            $discountPercentage = round(
-                                (($item['price'] - $item['sale_price']) / $item['price']) * 100
-                            );
+                        $discountPercentage = round(
+                            (($item['price'] - $item['sale_price']) / $item['price']) * 100
+                        );
 
-                            echo "<span class='item-price-sale'>$" . $item['sale_price'] . "</span> ";
-                            echo "<span class='item-price-original'>$" . $item['price'] . "</span> ";
-                            echo "<span class='item-price-percentage'>-" . $discountPercentage . "%</span>";
-                        }
-                    ?>
-                    <p><?= $item['name'] ?></p>
-                    <p>
-                        <i class="fa-solid fa-star fa-xs"></i>
-                        <span><?= $item['rating'] ?> (<?= $item['reviews'] ?>)</span>
-                    </p>
-                    <div class="item-btn-section">
-                        <form method="POST" action="/programme/${programme.id}/remove_cart" class="item-btn-form">
-                        <button class="item-btn unpicked">Add to cart</button>
-                        </form>
-                    </div>
-                </a>
+                        echo "<span class='item-price-sale'>$" . $item['sale_price'] . "</span> ";
+                        echo "<span class='item-price-original'>$" . $item['price'] . "</span> ";
+                        echo "<span class='item-price-percentage'>-" . $discountPercentage . "%</span>";
+                    }
+                ?>
+                <p><?= $item['name'] ?></p>
+                <p>
+                    <i class="fa-solid fa-star fa-xs"></i>
+                    <span><?= $item['rating'] ?> (<?= $item['reviews'] ?>)</span>
+                </p>
+                <div class="item-btn-section">
+                    <form method="POST" action="/programme/${programme.id}/remove_cart" class="item-btn-form">
+                    <button class="item-btn unpicked">Add to cart</button>
+                    </form>
+                </div>
+            </a>
 
         <?php endforeach ?>
 

@@ -18,8 +18,9 @@ class Database
                 $dbname = $_ENV['DB_NAME'];
                 $user = $_ENV['DB_USERNAME'];
                 $password = $_ENV['DB_PASSWORD'];
+                $ssl = $_ENV['DB_SSLMODE'];
 
-                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require";
+                $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=$ssl";
 
                 self::$instance = new PDO(
                     $dsn,
@@ -31,6 +32,7 @@ class Database
                         PDO::ATTR_EMULATE_PREPARES   => false,
                     ]
                 );
+                self::$instance->exec("SET search_path TO silversale, public");
             } catch (PDOException $e) {
                 die("Connection failed: " . $e->getMessage());
             }

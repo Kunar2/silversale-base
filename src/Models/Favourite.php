@@ -16,9 +16,9 @@ class Favourite
     public function getByUserId($userId)
     {
         $stmt = $this->pdo->prepare(
-            'SELECT * FROM silversale.favourite
-            JOIN silversale.item 
-            ON silversale.favourite.item_id = silversale.item.item_id
+            'SELECT * FROM favourite
+            JOIN item 
+            ON favourite.item_id = item.item_id
             WHERE user_id = ?'
         );
         $stmt->execute([$userId]);
@@ -29,7 +29,7 @@ class Favourite
     public function insertByUserId($userId, $itemId)
     {
         $stmt = $this->pdo->prepare(
-            'INSERT INTO silversale.favourite VALUES (?, ?)
+            'INSERT INTO favourite VALUES (?, ?)
             ON CONFLICT (user_id, item_id) DO NOTHING'
         );
 
@@ -39,7 +39,7 @@ class Favourite
     public function deleteByUserId($userId, $itemId)
     {
         $stmt = $this->pdo->prepare(
-            'DELETE FROM silversale.favourite
+            'DELETE FROM favourite
             WHERE user_id = ? AND item_id = ?'
         );
 
@@ -50,7 +50,7 @@ class Favourite
     {
         $stmt = $this->pdo->prepare(
         'SELECT 1
-        FROM silversale.favourite
+        FROM favourite
         WHERE user_id = ? AND item_id = ?
         LIMIT 1'
     );

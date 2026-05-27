@@ -1,4 +1,7 @@
 <header>
+    <?php 
+    $selectedPrice = $_GET['search'] ?? '';
+    ?>
     <div class="navigation-container">
 
         <a class="title" href="/">Silversale</a>
@@ -11,7 +14,7 @@
 
         <div class="search">
             <form method="GET" action="/catalogue" class="search-form">
-                <input class="search-bar" placeholder="Search.." type="text" name="keywords">
+                <input class="search-bar" placeholder="Search.." type="text" name="search" value="<?= $selectedPrice ?>" id="searchBar">
                 <button class="search-button" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -40,6 +43,16 @@
                 <i class="fa-solid fa-user fa-lg"></i>
                 <span><?= htmlspecialchars($username ?? 'Account') ?></span>
             </a>
+
+            <?php if ($_SESSION['role'] = "admin"): ?>
+
+            <a href="/admin-panel" class="nav-item <?= ($currentPage === 'admin-panel') ? 'active' : '' ?>">
+                <i class="fa-solid fa-gear fa-lg"></i>
+                <span>Admin panel</span>
+            </a>
+
+            <?php endif; ?>
+ 
 
         <?php else: ?>
 

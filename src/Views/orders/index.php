@@ -15,70 +15,98 @@ require_once __DIR__ . '/../partials/navbar.php';
             <option value="price">This month</option>
             <option value="price">This year</option>
         </select>
-        <section class="order">
-            <h2>Order ID: 2442FAF</h2>
 
-            <div class="order-items">
-                <a class="order-item" href="/item">
-                    <img src="public/item_1.png" alt="item">
-                    <p>Name</p>
-                    <p>Price</p>
-                    <p>Rating</p>
-                </a>
+        <?php 
 
-                <a class="order-item" href="/item">
-                    <img src="public/item_1.png" alt="item">
-                    <p>Name</p>
-                    <p>Price</p>
-                    <p>Rating</p>
-                </a>
+        $groupedOrders = [];
 
-                <a class="order-item" href="/item">
-                    <img src="public/item_1.png" alt="item">
-                    <p>Name</p>
-                    <p>Price</p>
-                    <p>Rating</p>
-                </a>
-            </div>
+        foreach ($userOrders as $userOrder) {
 
-            <div class="order-info">
-                <p>Sum: $42</p>
-                <p>Date: 04/05/2026</p>
-                <p>Address: Samal-3, 25</p>
-                <p>Expected delivery: 24/05/2026</p>
-                <p>Status: Processing</p>
-                <p><a href="/customer-order">Expanded info</a></p>
-            </div>
-        </section>
+            $orderId = $userOrder['order_id'];
 
-        <section class="order">
-            <h2>Order ID: 2362dAF</h2>
+            if (!isset($groupedOrders[$orderId])) {
 
-            <div class="order-items">
-                <a class="order-item" href="/item">
-                    <img src="public/item_1.png" alt="item">
-                    <p>Name</p>
-                    <p>Price</p>
-                    <p>Rating</p>
-                </a>
+                $groupedOrders[$orderId] = [
+                    'order_id' => $userOrder['order_id'],
+                    'status' => $userOrder['status'],
+                    'total_price' => $userOrder['total_price'],
+                    'estimated_delivery' => $userOrder['estimated_delivery'],
+                    'delivered_at' => $userOrder['delivered_at'],
+                    'date_ordered' => $userOrder['date_ordered'],
+                    'items' => []
+                ];
+            }
 
-                <a class="order-item" href="/item">
-                    <img src="public/item_1.png" alt="item">
-                    <p>Name</p>
-                    <p>Price</p>
-                    <p>Rating</p>
-                </a>
-            </div>
+            $groupedOrders[$orderId]['items'][] = [
+                'item_id' => $userOrder['item_id'],
+                'unit_id' => $userOrder['unit_id'],
+                'name' => $userOrder['name'],
+                'size' => $userOrder['size'],
+                'image' => $userOrder['image'],
+                'quantity' => $userOrder['quantity'],
+                'unit_price_snapshot' => $userOrder['unit_price_snapshot']
+            ];
+        }
 
-            <div class="order-info">
-                <p>Sum: $24</p>
-                <p>Date: 24/05/2026</p>
-                <p>Address: Al-Farabi, 25</p>
-                <p>Expected delivery: 14/05/2026</p>
-                <p>Status: Shipped</p>
-                <p><a href="/customer-order">Expanded info</a></p>
-            </div>
-        </section>
+        $groupedOrders = array_values($groupedOrders);
+
+        ?>
+
+        <?php foreach ($groupedOrders as $groupedOrder): ?>
+            <section class="order">
+
+                <h2>Order ID: <?= $groupedOrder['order_id'] ?></h2>
+
+                <div class="order-items">
+
+                    <?php foreach ($groupedOrder['items'] as $item): ?>
+
+                        <a class="order-item" href="/catalogue/item/<?= $item['item_id'] ?>">
+
+                            <img src="<?= $item['image'] ?>" alt="item">
+
+                            <p><?= $item['name'] ?> (<?= strtoupper($item['size']) ?>)</p>
+
+                            <p>Quantity: <?= $item['quantity'] ?></p>
+
+                            <p>$<?= $item['unit_price_snapshot'] ?></p>
+
+                        </a>
+
+                    <?php endforeach; ?>
+
+                </div>
+
+                <div class="order-info">
+
+                    <p>Sum: $<?= $groupedOrder['total_price'] ?></p>
+
+                    <p>Date: <?= date('d/m/Y', strtotime($groupedOrder['date_ordered'])) ?></p>
+
+                    <?php if ($groupedOrder['delivered_at']): ?>
+
+                        <p>Delivered at: <?= date('d/m/Y', strtotime($groupedOrder['delivered_at'])) ?></p>
+
+                        <?php else: ?>
+
+                        <p>Expected delivery: <?= date('d/m/Y', strtotime($groupedOrder['estimated_delivery'])) ?></p>
+
+                    <?php endif; ?>
+
+                    <p>Status: <?= $groupedOrder['status'] ?></p>
+
+                    <p>
+                        <a href="/customer-order/<?= $groupedOrder['order_id'] ?>">
+                            Expanded info
+                        </a>
+                    </p>
+
+                </div>
+
+            </section>
+
+        <?php endforeach ?>
+
     </div>
 
 

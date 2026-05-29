@@ -67,6 +67,16 @@ class Address
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function updateInsertUserAddress($data)
+    {
+        if ($this->getAddressAccount($data['user_id'])) 
+        {
+            return $this->updateUserAddress($data);
+        }
+
+        return $this->insertUserAddress($data);
+    }
+
     public function insertUserAddress($data)
     {
         $stmt = $this->pdo->prepare(

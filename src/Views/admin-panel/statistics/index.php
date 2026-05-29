@@ -13,74 +13,67 @@ require_once __DIR__ . '/../../partials/navbar.php';
         <label for="sort_type">Timeframe</label>
     </p>
 
-    <select class="catalogue-option" name="sort_type" id="sort_type">
-        <option value="all">All</option>
-        <option value="today">Today</option>
-        <option value="week">This week</option>
-        <option value="month">This month</option>
-        <option value="year">This year</option>
-        <option value="specific">Specific timeframe</option>
-    </select>
+    <form action="/admin-panel/statistics" method="GET">
+        <select name="timeframe" id="timeframe" class="catalogue-option" onchange="this.form.submit()">
+            <option value="all" <?= ($timeframe ?? 'all') === 'all' ? 'selected' : '' ?>>
+                All time
+            </option>
+
+            <option value="week" <?= ($timeframe ?? '') === 'week' ? 'selected' : '' ?>>
+                Past week
+            </option>
+
+            <option value="month" <?= ($timeframe ?? '') === 'month' ? 'selected' : '' ?>>
+                Past month
+            </option>
+
+            <option value="year" <?= ($timeframe ?? '') === 'year' ? 'selected' : '' ?>>
+                Past year
+            </option>
+        </select>
+    </form>
 
     <p>
-        Total users: 42
+        Total orders: <?= $data['totalOrders'] ?>
     </p>
     <p>
-        Total items: 50
+        Total items sold: <?= $data['totalItemsSold'] ?>
     </p>
     <p>
-        Total orders: 34
+        Current revenue: $<?= $data['revenue'] ?>
     </p>
     <p>
-        Total items sold: 67
+        Total users: <?= $data['totalUsers'] ?>
     </p>
     <p>
-        Most sold item: baseball cap
-    </p>
-    <p>
-        Current revenue: $740
+        Total items: <?= $data['totalItems'] ?>
     </p>
 
     <div class="item-data-form">
 
         <p class="items-title">Order status data:</p>
 
-        <table class="admin-panel-table order-items-table">
-        <tr>
-            <th>Status</th>
-            <th>Quantity</th>
-        </tr>
+       <table class="admin-panel-table order-items-table">
+            <tr>
+                <th>Status</th>
+                <th>Quantity</th>
+            </tr>
 
-        <tr>
-            <td>Processing</td>
-            <td>30</td>    
-        </tr>
+            <?php foreach ($statusCounts as $status): ?>
 
-        <tr>
-            <td>Shipped</td>
-            <td>52</td>
-        </tr>
+                <tr>
+                    <td><?= ucfirst($status['status']) ?></td>
+                    <td><?= $status['quantity'] ?></td>
+                </tr>
 
-        <tr>
-            <td>Received</td>
-            <td>96</td>
-        </tr>
-        
-        <tr>
-            <td>Cancelled</td>
-            <td>120</td>
-        </tr>
+            <?php endforeach; ?>
 
         </table>
-        
+            
     </div>
 
     <div class="item-data-buttons">
-        <button type="submit" class="accept-btn">Export as Excel</button>
-    </div>
-
-    <div class="item-data-buttons">
-        <button type="submit" class="accept-btn">Export as PDF</button>
+        <button type="submit" class="accept-btn" onclick="window.print()">Export as PDF</button>
     </div>
 </div>
 

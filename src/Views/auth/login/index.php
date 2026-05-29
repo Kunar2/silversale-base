@@ -2,11 +2,6 @@
 require_once __DIR__ . '/../../partials/head.php';
 require_once __DIR__ . '/../../partials/navbar.php';
 
-// if (isset($_SESSION['user_id'])) {
-//     echo "User is logged in";
-// } else {
-//     echo "User is not logged in";
-// }
 ?>
 
     <div class="login-box">

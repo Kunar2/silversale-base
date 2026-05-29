@@ -1,12 +1,12 @@
 <?php
-namespace App\Controllers\Admin;
+namespace App\Controllers\admin;
 
 use App\Core\BaseController;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Address;
 
-class AdminOrderController extends BaseController
+class adminOrderController extends BaseController
 {
     private Cart $cart;
     private Order $order;
@@ -37,7 +37,7 @@ class AdminOrderController extends BaseController
     {   
         $id = $params['id'] ?? null;
 
-        $orderDetailed = $this->order->getOrderAdminDetailed($id);
+        $orderDetailed = $this->order->getOrderDetailed($id);
 
         $data = [
             'pageTitle'   => 'Order Details',

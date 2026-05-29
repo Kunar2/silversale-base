@@ -1,14 +1,14 @@
 <?php
-namespace App\Controllers\Admin;
+namespace App\Controllers\admin;
 
 use App\Core\BaseController;
 
-class AdminPanelController extends BaseController
+class adminPanelController extends BaseController
 {
     public function index()
     {
         $data = [
-            'pageTitle' => 'Admin',
+            'pageTitle' => 'admin',
             'currentPage' => 'admin-panel' 
         ];
 

@@ -9,7 +9,7 @@ require_once __DIR__ . '/../partials/navbar.php'; ?>
 
 <div class="item-list-box">
 
-    <form action="/catalogue" method="GET" class="wall">
+    <form action="/catalogue" method="GET" class="wall" id="filterForm">
 
         <input 
         type="hidden" 
@@ -18,10 +18,17 @@ require_once __DIR__ . '/../partials/navbar.php'; ?>
         value="<?= $_GET['search'] ?? '' ?>"
         >
 
+        <input 
+        type="hidden" 
+        name="sort_type" 
+        id="filterSortType"
+        value="<?= $_GET['sort_type'] ?? 'name' ?>"
+    >
+
         <?php
         $selectedCategories = $_GET['category'] ?? [];
         $selectedGender = $_GET['gender'] ?? 'any';
-        $selectedPrice = $_GET['filter_price'] ?? 'any';
+        $selectedPrice = $_GET['max_price'] ?? 'any';
 
         // In case only one checkbox is selected
         if (!is_array($selectedCategories)) {
@@ -76,30 +83,6 @@ require_once __DIR__ . '/../partials/navbar.php'; ?>
         </div>
 
         <div>
-            <label for="gender">Gender:</label>
-
-            <select class="catalogue-option" name="gender" id="gender">
-
-                <option value="any" <?= $selectedGender === 'any' ? 'selected' : '' ?>>
-                    Any
-                </option>
-
-                <option value="Male" <?= $selectedGender === 'Male' ? 'selected' : '' ?>>
-                    Male
-                </option>
-
-                <option value="Female" <?= $selectedGender === 'Female' ? 'selected' : '' ?>>
-                    Female
-                </option>
-
-                <option value="Unisex" <?= $selectedGender === 'Unisex' ? 'selected' : '' ?>>
-                    Unisex
-                </option>
-
-            </select>
-        </div>
-
-        <div>
             <label for="filter_price">Price:</label>
 
             <select class="catalogue-option" name="max_price" id="filter_price">
@@ -136,10 +119,27 @@ require_once __DIR__ . '/../partials/navbar.php'; ?>
 
         <div class="sort-box">  
             <select class="catalogue-option" name="sort_type" id="sort_by">
-                <option value="name">Relevance</option>
-                <option value="reviews">Popularity</option>
-                <option value="price">Price (ascending)</option>
-                <option value="price">Price (descending)</option>
+
+                <option value="name" <?= ($_GET['sort_type'] ?? 'name') === 'name' ? 'selected' : '' ?>>
+                    Relevance
+                </option>
+
+                <option value="popularity" <?= ($_GET['sort_type'] ?? '') === 'popularity' ? 'selected' : '' ?>>
+                    Popularity
+                </option>
+
+                <option value="reviews" <?= ($_GET['sort_type'] ?? '') === 'reviews' ? 'selected' : '' ?>>
+                    Reviews
+                </option>
+
+                <option value="price_ascending" <?= ($_GET['sort_type'] ?? '') === 'price_ascending' ? 'selected' : '' ?>>
+                    Price (ascending)
+                </option>
+
+                <option value="price_descending" <?= ($_GET['sort_type'] ?? '') === 'price_descending' ? 'selected' : '' ?>>
+                    Price (descending)
+                </option>
+
             </select>
         </div>
 
@@ -147,7 +147,7 @@ require_once __DIR__ . '/../partials/navbar.php'; ?>
 
         <?php foreach ($items as $item): ?>
 
-                <a class="grid-item" href="catalogue/item/<?= $item['item_id'] ?>">
+            <a class="grid-item" href="catalogue/item/<?= $item['item_id'] ?>">
 
                 <?php if (!empty($item['is_favourited'])): ?>
 
@@ -215,11 +215,21 @@ require_once __DIR__ . '/../partials/navbar.php'; ?>
 <script>
 
 document.getElementById('filterForm').addEventListener('submit', function () {
+
+    // Search bar
     const searchBar = document.getElementById('searchBar');
     const filterSearch = document.getElementById('filterSearch');
 
     if (searchBar && filterSearch) {
         filterSearch.value = searchBar.value;
+    }
+
+    // Sort select
+    const sortBy = document.getElementById('sort_by');
+    const filterSortType = document.getElementById('filterSortType');
+
+    if (sortBy && filterSortType) {
+        filterSortType.value = sortBy.value;
     }
 });
 

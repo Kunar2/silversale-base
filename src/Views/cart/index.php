@@ -3,59 +3,78 @@ require_once __DIR__ . '/../partials/head.php';
 require_once __DIR__ . '/../partials/navbar.php';
 ?>
 
-    <div class="cart-box">
+<?php 
+$total = 0;
+foreach ($cartItems as $cartItem):
+    $total = $total + $cartItem['line_subtotal'];
+endforeach ?>
 
-        <div class="cart-title">
-            Your bag
-        </div>
+<div class="cart-box">
 
-        <?php 
-        $total = 0;
-        foreach ($cartItems as $cartItem):
-            $total = $total + $cartItem['line_subtotal'];
-        endforeach ?>
+    <h1 class="cart-title">Your bag</h1>
 
-        <div class="subtotal-box">
-            <a href="checkout"> <button class="checkout" type="button">Proceed to checkout</button></a>
-            <p class="subtotal-text">Total: <span id="subtotal">$ <?= $total ?> </span></span> </p>
-            <p class="checkout-info">Shipping prices, taxes, and time of arrival will be specified at the checkout.</p>
-        </div>
+    <?php 
+    $total = 0;
+    foreach ($cartItems as $cartItem):
+        $total += $cartItem['line_subtotal'];
+    endforeach;
+    ?>
 
+    <div class="cart-items">
         <?php foreach ($cartItems as $cartItem): ?>
-
         <div class="cart-item" id="<?= $cartItem['unit_id'] ?>">
-                <a href="item" style="text-decoration: none">
-                    <div class="cart-item-image"> <img alt="name" src=<?= $cartItem['image'] ?>></div>
-
-                    <div class="cart-description">
-                        <p class="cart-item-name"><?= $cartItem['name'] . " (" . strtoupper($cartItem['size']) . ")" ?></p>
-                        <p class="cart-item-description"><?= $cartItem['description'] ?></p>
-                    </div>
+            
+            <div class="cart-item-image">
+                <a href="item">
+                    <img src="<?= $cartItem['image'] ?>" alt="<?= $cartItem['name'] ?>">
                 </a>
+            </div>
+
+            <div class="cart-item-details">
+                <a href="item" class="cart-item-name">
+                    <?= htmlspecialchars($cartItem['name']) ?> (<?= strtoupper($cartItem['size']) ?>)
+                </a>
+                <p class="cart-item-description"><?= htmlspecialchars($cartItem['description']) ?></p>
 
                 <div class="quantity-box">
-                    <form action="/cart/delete/<?= $cartItem['unit_id'] ?>" method="post" style="display:inline;">
+                    <form action="/cart/delete/<?= $cartItem['unit_id'] ?>" method="post" style="display: inline;">
                         <button class="quantity-minus" type="submit">-</button>
                     </form>
 
-                    <input class="quantity" type="text" value="<?= $cartItem['item_quantity'] ?>" />
+                    <input class="quantity" type="text" value="<?= $cartItem['item_quantity'] ?>" readonly>
 
-                    <form action="/cart/insert/<?= $cartItem['unit_id'] ?>" method="post" style="display:inline;">
+                    <form action="/cart/insert/<?= $cartItem['unit_id'] ?>" method="post" style="display: inline;">
                         <button class="quantity-plus" type="submit">+</button>
                     </form>
-
-                    <div class="cart-item-price">
-                        $<span><?= $cartItem['line_subtotal'] ?></span>
-                    </div>
                 </div>
 
-                <form action="/cart/delete-full/<?= $cartItem["unit_id"] ?>" method="post">
-                    <button type="submit">Remove</button>
+                <div class="cart-item-price">
+                    $<span><?= $cartItem['line_subtotal'] ?></span>
+                </div>
+
+                <form action="/cart/delete-full/<?= $cartItem['unit_id'] ?>" method="post">
+                    <button type="submit" class="remove-btn">Remove</button>
                 </form>
+            </div>
         </div>
-
-        <?php endforeach ?>
-
+        <?php endforeach; ?>
     </div>
+
+    <?php if ($total > 0): ?>
+    <div class="cart-summary">
+        <div class="summary-content">
+            <div class="total">
+                Total: <span id="subtotal">$<?= $total ?></span>
+            </div>
+            <p class="shipping-note">Shipping prices, taxes, and time of arrival will be specified at the checkout.</p>
+            
+            <a href="checkout" style="text-decoration: none;">
+                <button class="checkout" type="button">Proceed to checkout</button>
+            </a>
+        </div>
+    </div>
+    <?php endif ?>
+
+</div>
 
 <?php require_once __DIR__ . '/../partials/footer.php'; ?>

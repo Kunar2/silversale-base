@@ -5,16 +5,19 @@ require_once __DIR__ . '/../partials/navbar.php';
 
     <div class="orders-box">
 
-        <h1>Orders</h1>
+        <h1 style="font-size: 2.4rem">Orders</h1>
         
         <p><label for="sort_type">Timeframe filter:</label></p>
-        <select class="catalogue-option" name="sort_type" id="sort_type">
-            <option value="all">All</option>
-            <option value="day">Today</option>
-            <option value="reviews">This week</option>
-            <option value="price">This month</option>
-            <option value="price">This year</option>
-        </select>
+
+        <form action="/orders" method="GET">
+
+            <select class="catalogue-option" name="timeframe" id="timeframe" onchange="this.form.submit()">
+                <option value="all" <?= ($timeframe ?? 'all') === 'all' ? 'selected' : '' ?>>All time</option>
+                <option value="week" <?= ($timeframe ?? '') === 'week' ? 'selected' : '' ?>>Past week</option>
+                <option value="month" <?= ($timeframe ?? '') === 'month' ? 'selected' : '' ?>>Past month</option>
+                <option value="year" <?= ($timeframe ?? '') === 'year' ? 'selected' : '' ?>>Past year</option>
+            </select>
+        </form>
 
         <?php 
 
@@ -96,7 +99,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                     <p>Status: <?= $groupedOrder['status'] ?></p>
 
                     <p>
-                        <a href="/customer-order/<?= $groupedOrder['order_id'] ?>">
+                        <a href="/orders/order-data/<?= $groupedOrder['order_id'] ?>">
                             Expanded info
                         </a>
                     </p>

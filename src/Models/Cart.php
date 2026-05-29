@@ -24,6 +24,18 @@ class Cart
         return $this->getCartItemsId($cartId);
     }
 
+    public function insertCart($userId)
+    {
+        $stmt = $this->pdo->prepare(
+            'INSERT INTO cart (user_id)
+            VALUES (?)'
+        );
+
+        $stmt->execute([$userId]);
+
+        return $this->pdo->lastInsertId();
+    }
+
     public function getCartId($userId)
     {
         $stmt = $this->pdo->prepare(

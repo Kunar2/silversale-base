@@ -24,25 +24,51 @@ class OrderController extends BaseController
     public function index()
     {
         $userId = $_SESSION['user_id'] ?? null;
-        $orderSnapshot = $this->order->getOrderSnapshot($userId);
+
+        if (!$userId) {
+            header('Location: /login');
+            exit;
+        }
+
+        $timeframe = $_GET['timeframe'] ?? 'all';
+
+        $orderSnapshot = $this->order->getOrderSnapshot(
+            $userId,
+            $timeframe
+        );
 
         $data = [
             'pageTitle' => 'Orders',
             'currentPage' => 'orders',
-            'userOrders' => $orderSnapshot 
+            'userOrders' => $orderSnapshot,
+            'timeframe' => $timeframe
         ];
 
         $this->render('orders', $data);
     }
 
-    public function show()
+    public function show(array $params)
     {
-        $data = [
-            'pageTitle' => 'Order data',
-            'currentPage' => 'orders' 
-        ];
+        $orderId = $params['id'] ?? null;
+        $userId = $_SESSION['user_id'] ?? null;
 
-        $this->render('customer-order', $data);
+        if (!$userId) {
+            header('Location: /login');
+            exit;
+        }
+
+        $order = $this->order->getOrderDetailed($orderId);
+
+        if (!$order || $order['user_id'] != $userId) {
+            http_response_code(403);
+            die('Access denied');
+        }
+
+        $this->render('orders/order-data', [
+            'pageTitle' => 'Order details',
+            'currentPage' => 'orders',
+            'userOrders'  => $order
+        ]);
     }
 
     public function checkout()
@@ -135,6 +161,6 @@ class OrderController extends BaseController
         $this->address->insertOrderAddress($addressData);
         error_log('Order inserted successfully');
 
-        $this->render('/orders');
+        $this->index();
     }
 }

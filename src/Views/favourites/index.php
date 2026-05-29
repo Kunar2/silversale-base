@@ -42,8 +42,17 @@ require_once __DIR__ . '/../partials/navbar.php';
                 <span><?= $favourite['rating'] ?> (<?= $favourite['reviews'] ?>)</span>
             </p>
             <div class="item-btn-section">
-                <form method="POST" action="/programme/${programme.id}/remove_cart" class="item-btn-form">
-                <button class="item-btn picked">Add to cart</button>
+                
+                <?php if (!empty($favourite['item_in_cart'])): ?>
+
+                <button class="item-btn picked" href="/catalogue/item/<?= $favourite['item_id'] ?>" >Manage item</button>
+
+            <?php else: ?>
+
+                <button class="item-btn unpicked" href="/catalogue/item/<?= $favourite['item_id'] ?>" >Add to cart</button>
+
+            <?php endif; ?>
+
                 </form>
             </div>
         </a>

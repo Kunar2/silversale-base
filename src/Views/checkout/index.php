@@ -21,7 +21,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 class="credentials-input address-input"
                 maxlength="25"
                 type="text"
-                value="<?= $address['recipient_name'] ?>"
+                value="<?= $address['recipient_name'] ?? '' ?>"
                 required
             >
         </div>
@@ -34,7 +34,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 class="credentials-input address-input"
                 maxlength="25"
                 type="text"
-                value="<?= $address['recipient_phone'] ?>"
+                value="<?= $address['recipient_phone'] ?? '' ?>"
                 required
             >
         </div>
@@ -47,7 +47,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 class="credentials-input address-input"
                 maxlength="25"
                 type="text"
-                value="<?= $address['country'] ?>"
+                value="<?= $address['country'] ?? '' ?>"
                 required
             >
         </div>
@@ -60,7 +60,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 class="credentials-input address-input"
                 maxlength="25"
                 type="text"
-                value="<?= $address['city'] ?>"
+                value="<?= $address['city'] ?? '' ?>"
                 required
             >
         </div>
@@ -73,7 +73,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 class="credentials-input address-input"
                 maxlength="25"
                 type="text"
-                value="<?= $address['address_line_1'] ?>"
+                value="<?= $address['address_line_1'] ?? '' ?>"
                 required
             >
         </div>
@@ -86,7 +86,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 class="credentials-input address-input"
                 maxlength="25"
                 type="text"
-                value="<?= $address['address_line_2'] ?>"
+                value="<?= $address['address_line_2'] ?? '' ?>"
             >
         </div>
 
@@ -99,7 +99,7 @@ require_once __DIR__ . '/../partials/navbar.php';
                 maxlength="5"
                 type="text"
                 oninput="validateDigit(this, 'validateElementValue')"
-                value="<?= $address['postal_code'] ?>"
+                value="<?= $address['postal_code'] ?? '' ?>"
                 required
             >
         </div>
@@ -109,6 +109,7 @@ require_once __DIR__ . '/../partials/navbar.php';
 
     </div>
     <?php 
+    
     $total = 0;
     foreach ($cartItems as $cartItem):
         $total = $total + $cartItem['line_subtotal'];
@@ -120,7 +121,7 @@ require_once __DIR__ . '/../partials/navbar.php';
         <div>Shipping tax: $20</div>
         <div>Expected delivery: <?= (new DateTime())->modify('+20 days')->format('d-m-Y') ?></div>
 
-        <button class="checkout2" type="submit">Order</button>
+        <button class="checkout" type="submit" style="margin-top:20px;">Order</button>
     </div>
 
     </form>

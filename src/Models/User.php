@@ -13,13 +13,13 @@ class User
         $this->pdo = $pdo;
     }
 
-    public function getUserAdminSnapshot()
+    public function getUseradminSnapshot()
     {
         $stmt = $this->pdo->query('SELECT users.user_id, users.username, users.email, users.role FROM users');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insertUserAdmin($data)
+    public function insertUseradmin($data)
     {
         $stmt = $this->pdo->prepare(
             "INSERT INTO users (
@@ -41,21 +41,105 @@ class User
         return $this->pdo->lastInsertId();
     }
 
-    public function updateUser($userId, $data)
+    public function userEmailExists($email)
     {
+        $stmt = $this->pdo->prepare(
+            "SELECT user_id
+            FROM users
+            WHERE email = ?"
+        );
+
+        $stmt->execute([
+            $email,
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function updateUserAdmin($userId, $data)
+    {
+        
+        if ($data['password'] !== null) {
+
+            $stmt = $this->pdo->prepare(
+                "UPDATE users
+                SET
+                    username = ?,
+                    email = ?,
+                    password = ?,
+                    role = ?,
+                    image = COALESCE(?, image)
+                WHERE user_id = ?"
+            );
+
+            return $stmt->execute([
+                $data['username'],
+                $data['email'],
+                $data['password'] ?? null,
+                $data['role'] ?? 'Customer',
+                $data['image'] ?? '',
+                $userId
+            ]);
+        }
+
+        // Update without password
         $stmt = $this->pdo->prepare(
             "UPDATE users
             SET
                 username = ?,
                 email = ?,
-                role = ?
+                role = ?,
+                image = COALESCE(?, image)
             WHERE user_id = ?"
         );
 
         return $stmt->execute([
             $data['username'],
             $data['email'],
+            $data['role'] ?? "customer",
+            $data['image'] ?? null,
+            $userId
+        ]);
+    }
+
+    public function updateUserNoEmail($userId, $data)
+    {
+        // Update with password
+        if ($data['password'] !== null) {
+
+            $stmt = $this->pdo->prepare(
+                "UPDATE users
+                SET
+                    username = ?,
+                    password = ?,
+                    role = ?,
+                    image = COALESCE(?, image)
+                WHERE user_id = ?"
+            );
+
+            return $stmt->execute([
+                $data['username'],
+                $data['password'],
+                $data['role'],
+                $data['image'],
+                $userId
+            ]);
+        }
+
+        // Update without password
+        $stmt = $this->pdo->prepare(
+            "UPDATE users
+            SET
+                username = ?,
+                role = ?,
+                image = COALESCE(?, image)
+            WHERE user_id = ?"
+        );
+
+        return $stmt->execute([
+            $data['username'],
             $data['role'],
+            $data['image'],
             $userId
         ]);
     }
@@ -70,7 +154,7 @@ class User
         return $stmt->execute([$userId]);
     }
 
-    public function getUserAdminDetailed($userId)
+    public function getUseradminDetailed($userId)
     {
         $stmt = $this->pdo->prepare('SELECT users.*, order_main.* 
         FROM users 
@@ -125,7 +209,7 @@ class User
 
         $stmt->execute([$username]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchColumn();
     }
 
     public function getByUsername(string $username)
@@ -135,6 +219,17 @@ class User
         );
 
         $stmt->execute([$username]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function getById($userId)
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT * FROM users WHERE user_id = ?'
+        );
+
+        $stmt->execute([$userId]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -153,7 +248,7 @@ class User
     public function insertUser($username, $password, $email)
     {
         
-        $customerRole = 'Customer';
+        $customerRole = 'customer';
 
         $username = trim($username);
         $email = trim($email);

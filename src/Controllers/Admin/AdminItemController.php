@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\Admin;
+namespace App\Controllers\admin;
 
 use App\Core\BaseController;
 use App\Models\Cart;
@@ -7,7 +7,7 @@ use App\Models\Order;
 use App\Models\Address;
 use App\Models\Item;
 
-class AdminItemController extends BaseController
+class adminItemController extends BaseController
 {
     private Cart $cart;
     private Order $order;
@@ -25,7 +25,7 @@ class AdminItemController extends BaseController
 
     public function index()
     {
-        $itemSnapshot = $this->item->getItemAdminSnapshot();
+        $itemSnapshot = $this->item->getItemadminSnapshot();
 
         $data = [
             'pageTitle'   => 'Items',
@@ -54,7 +54,7 @@ class AdminItemController extends BaseController
         }
 
         // Edit
-        $itemDetailed = $this->item->getItemAdminDetailed($id);
+        $itemDetailed = $this->item->getItemadminDetailed($id);
 
         $data = [
             'pageTitle'   => 'Item details',

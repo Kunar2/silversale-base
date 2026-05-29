@@ -41,6 +41,13 @@ class BaseController
         $data['address'] = $data['address'] ?? [];
         $data['userOrders'] = $data['userOrders'] ?? [];
 
+        $data['totalUsers'] = $data['totalUsers'] ?? 0;
+        $data['totalOrders'] = $data['totalOrders'] ?? 0;
+        $data['totalItemsSold'] = $data['totalItemsSold'] ?? 0;
+        $data['revenue'] = $data['revenue'] ?? 0;
+        $data['statusCounts'] = $data['statusCounts'] ?? [];
+        $data['timeframe'] = $data['timeframe'] ?? 'all';
+
         // Make all $data variables available directly in the view
         extract($data);
 

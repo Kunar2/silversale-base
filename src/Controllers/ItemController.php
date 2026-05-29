@@ -24,12 +24,12 @@ class ItemController extends BaseController
 
     public function index()
     {
-
         $filters = [
             'category' => $_GET['category'] ?? null,
             'gender' => $_GET['gender'] ?? null,
             'max_price' => $_GET['max_price'] ?? null,
             'search' => $_GET['search'] ?? null,
+            'sort_type' => $_GET['sort_type'] ?? 'name',
         ];
 
 

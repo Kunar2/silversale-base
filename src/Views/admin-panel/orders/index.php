@@ -13,7 +13,7 @@ require_once __DIR__ . '/../../partials/navbar.php';
             <tr>
                 <th class="edit-column"></th>
                 <th>Order ID</th>
-                <th>Customer</th>
+                <th>customer</th>
                 <th>Date ordered</th>
                 <th>Total</th>
                 <th>Status</th>

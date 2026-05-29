@@ -44,7 +44,7 @@
                 <span><?= htmlspecialchars($username ?? 'Account') ?></span>
             </a>
 
-            <?php if ($_SESSION['role'] = "admin"): ?>
+            <?php if ($_SESSION['role'] === "admin"): ?>
 
             <a href="/admin-panel" class="nav-item <?= ($currentPage === 'admin-panel') ? 'active' : '' ?>">
                 <i class="fa-solid fa-gear fa-lg"></i>

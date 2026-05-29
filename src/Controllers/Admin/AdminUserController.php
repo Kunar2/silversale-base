@@ -1,11 +1,11 @@
 <?php
-namespace App\Controllers\Admin;
+namespace App\Controllers\admin;
 
 use App\Core\BaseController;
 use App\Models\User;
 use App\Models\Order;
 
-class AdminUserController extends BaseController
+class adminUserController extends BaseController
 {
 
     private User $user;
@@ -20,7 +20,7 @@ class AdminUserController extends BaseController
 
     public function index()
     {
-        $userSnapshot = $this->user->getUserAdminSnapshot();        
+        $userSnapshot = $this->user->getUseradminSnapshot();        
 
         $data = [
             'pageTitle'   => 'Users',
@@ -49,7 +49,7 @@ class AdminUserController extends BaseController
         }
 
         // Edit
-        $userDetailed = $this->user->getUserAdminDetailed($id);
+        $userDetailed = $this->user->getUseradminDetailed($id);
 
         $data = [
             'pageTitle'   => 'User details',
@@ -69,7 +69,7 @@ class AdminUserController extends BaseController
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $this->user->insertUserAdmin([
+        $this->user->insertUseradmin([
             'username' => $username,
             'email' => $email,
             'password' => $hashedPassword,
@@ -97,6 +97,7 @@ class AdminUserController extends BaseController
         $data = [
             'username' => $username,
             'email' => $email,
+            'password' => $password,
             'role' => $role,
         ];
 
@@ -106,7 +107,7 @@ class AdminUserController extends BaseController
             $data['password'] = null;
         }
 
-        $this->user->updateUser($id, $data);
+        $this->user->updateUserAdmin($id, $data);
 
         header('Location: /admin-panel/users/user-data/' . $id);
         exit;

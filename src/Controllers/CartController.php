@@ -17,8 +17,12 @@ class CartController extends BaseController
     public function index()
     {
         $userId = $_SESSION['user_id'] ?? null;
-
         $cartItems = $this->cart->getAllByUserId($userId);
+
+        if (!$userId) {
+            header('Location: /login');
+            exit;
+        }
 
         $data = [
             'pageTitle' => 'Cart',

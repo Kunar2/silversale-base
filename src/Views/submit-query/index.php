@@ -4,16 +4,17 @@ require_once __DIR__ . '/../partials/navbar.php';
 ?>
 
 
-    <div class="item-data-box">
+<div class="item-data-box">
 
-        <div class="item-data-header">
-            <p>Submit inquiry</p>
-        </div>
+    <div class="item-data-header">
+        <p>Submit inquiry</p>
+    </div>
 
-        <p> 
-            Email: al@gmail.com
-        </p>
+    <p>
+        Email: <?= htmlspecialchars($user['email'] ?? '') ?>
+    </p>
 
+    <form action="/submit-query" method="POST">
 
         <p style="margin-bottom: 10px;">
             <label for="category">Category:</label>
@@ -34,21 +35,21 @@ require_once __DIR__ . '/../partials/navbar.php';
             Message:
         </p>
 
-        <textarea class="inquiry-textbox" placeholder="Ask us a question!" id="inquiry"></textarea>
+        <textarea
+            class="inquiry-textbox"
+            name="message"
+            id="message"
+            placeholder="Ask us a question!"
+            required
+        ></textarea>
 
         <div class="item-data-buttons">
-            <button type="submit" class="accept-btn" onclick="sendInquiry()">Send</button>
+            <button type="submit" class="accept-btn">
+                Send
+            </button>
         </div>
 
-        <script>
+    </form>
 
-            function sendInquiry() {
-                document.getElementById("inquiry").value = "";
-                alert("Message sent!");
-            }
-
-        </script>
-
-    </div>
-
+</div>
 <?php require_once __DIR__ . '/../partials/footer.php'; ?>

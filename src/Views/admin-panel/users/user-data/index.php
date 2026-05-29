@@ -52,8 +52,8 @@ $userExists = ($users['user_id'] ?? 0) !== 0;
             <div class="form-group">
                 <label>Role:</label>
                 <select name="role">
-                    <option value="customer" <?= ($users['role'] ?? '') === 'Customer' ? 'selected' : '' ?>>Customer</option>
-                    <option value="admin" <?= ($users['role'] ?? '') === 'Admin' ? 'selected' : '' ?>>Admin</option>
+                    <option value="customer" <?= ($users['role'] ?? '') === 'customer' ? 'selected' : '' ?>>Customer</option>
+                    <option value="admin" <?= ($users['role'] ?? '') === 'admin' ? 'selected' : '' ?>>Admin</option>
                 </select>
             </div>
         </div>
@@ -66,7 +66,7 @@ $userExists = ($users['user_id'] ?? 0) !== 0;
             <tr>
                 <th class="edit-column"></th>
                 <th>Order_ID</th>
-                <th>Customer</th>
+                <th>customer</th>
                 <th>Date</th>
                 <th>Total</th>
                 <th>Status</th>
@@ -104,7 +104,7 @@ $userExists = ($users['user_id'] ?? 0) !== 0;
     <?php if($userExists): ?> 
 
     <form action="/admin-panel/users/delete/<?= $users['user_id'] ?>" method="POST" class="item-data-buttons">
-        <button type="submit" class="delete-btn" <?= ($users['role'] ?? '') === 'Admin' ? 'disabled' : '' ?> >Delete user</button>
+        <button type="submit" class="delete-btn" <?= ($users['role'] ?? '') === 'admin' ? 'disabled' : '' ?> >Delete user</button>
     </form>
 
     <?php endif; ?> 

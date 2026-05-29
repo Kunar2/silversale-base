@@ -1,6 +1,6 @@
 <?php 
-require_once __DIR__ . '/../../../partials/head.php';
-require_once __DIR__ . '/../../../partials/navbar.php';
+require_once __DIR__ . '/../../partials/head.php';
+require_once __DIR__ . '/../../partials/navbar.php';
 ?>
 
 <div class="item-data-box">
@@ -99,28 +99,6 @@ require_once __DIR__ . '/../../../partials/navbar.php';
             </div>
         </div>
 
-        <div class="section-title">
-            <h2>User data</h2>
-        </div>
-
-        <div class="form-grid">
-
-            <div class="form-group">
-                <label>User ID:</label>
-                <input type="text" name="user_id" value="<?= $userOrders['user_id'] ?>">
-            </div>
-
-            <div class="form-group">
-                <label>Username:</label>
-                <input type="text" name="username" value="<?= $userOrders['username'] ?>">
-            </div>
-
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="text" name="email" value="<?= $userOrders['email'] ?>">
-            </div>
-        </div>
-
         <p class="items-title">Items</p>
 
         <table class="admin-panel-table order-items-table">
@@ -159,4 +137,4 @@ require_once __DIR__ . '/../../../partials/navbar.php';
 
 </div>
 
-<?php require_once __DIR__ . '/../../../partials/footer.php'; ?>
+<?php require_once __DIR__ . '/../../partials/footer.php'; ?>

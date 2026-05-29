@@ -94,13 +94,13 @@ class Item
         return $this->pdo->lastInsertId();
     }
 
-    public function getItemAdminSnapshot()
+    public function getItemadminSnapshot()
     {
         $stmt = $this->pdo->query('SELECT item_id, name, manufacturer FROM item');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getItemAdminDetailed($itemId)
+    public function getItemadminDetailed($itemId)
     {
         $stmt = $this->pdo->prepare(
             "SELECT item.*, 
@@ -163,13 +163,16 @@ class Item
         $sql = "
             SELECT item.*, category.name AS category
             FROM item
-            JOIN category ON item.category_id = category.category_id
+            JOIN category 
+            ON item.category_id = category.category_id
             WHERE item.listed = true
         ";
 
         $params = [];
 
+        // Category filter
         if (!empty($filters['category'])) {
+
             $placeholders = implode(',', array_fill(0, count($filters['category']), '?'));
 
             $sql .= " AND category.name IN ($placeholders)";
@@ -179,22 +182,46 @@ class Item
             }
         }
 
-        if (!empty($filters['gender'])) {
-            $sql .= " AND item.gender = ?";
-            $params[] = $filters['gender'];
-        }
-
-        if (!empty($filters['max_price']) && $filters['max_price'] !== "any") {
-            $sql .= " AND item.sale_price <= ?";
-            $params[] = $filters['max_price'];
-        }
-
+        // Search filter
         if (!empty($filters['search'])) {
             $sql .= " AND item.name ILIKE ?";
             $params[] = '%' . $filters['search'] . '%';
         }
 
-        $sql .= " ORDER BY item.item_id DESC";
+        // Price filter
+        if (
+            isset($filters['max_price']) &&
+            $filters['max_price'] !== 'any'
+        ) {
+            $sql .= " AND item.sale_price <= ?";
+            $params[] = $filters['max_price'];
+        }
+
+        $sortType = $filters['sort_type'] ?? 'name';
+
+        switch ($sortType) {
+
+            case 'popularity':
+                $sql .= " ORDER BY rating * LOG(reviews + 1) DESC";
+                break;
+
+            case 'reviews':
+                $sql .= " ORDER BY reviews DESC";
+                break;
+
+            case 'price_ascending':
+                $sql .= " ORDER BY price ASC";
+                break;
+
+            case 'price_descending':
+                $sql .= " ORDER BY price DESC";
+                break;
+
+            case 'name':
+            default:
+                $sql .= " ORDER BY item_id DESC";
+                break;
+        }
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);

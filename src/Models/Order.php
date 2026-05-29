@@ -38,7 +38,7 @@ class Order
 
     
 
-    public function getOrderAdminDetailed($orderId)
+    public function getOrderDetailed($orderId)
     {
         $stmt = $this->pdo->prepare(
         'SELECT order_main.*, 
@@ -115,17 +115,20 @@ class Order
     return $order;
     }
 
-    public function getOrderSnapshot($userId)
+    public function getOrderSnapshot($userId, $timeframe = 'all')
     {
+        $condition = $this->getTimeframeCondition($timeframe);
+
         $stmt = $this->pdo->prepare(
-            'SELECT order_main.*, 
-            order_item.*, 
-            order_address.address_line_1,
-            order_item.item_id AS order_item_id,
-            inventory.size,
-            item.name, 
-            item.price, 
-            item.image
+            "SELECT 
+                order_main.*, 
+                order_item.*, 
+                order_address.address_line_1,
+                order_item.item_id AS order_item_id,
+                inventory.size,
+                item.name, 
+                item.price, 
+                item.image
 
             FROM order_main
 
@@ -141,7 +144,10 @@ class Order
             JOIN item
             ON item.item_id = order_item.item_id
 
-            WHERE order_main.user_id = ?'
+            WHERE order_main.user_id = ?
+            AND $condition
+
+            ORDER BY order_main.date_ordered DESC"
         );
 
         $stmt->execute([$userId]);
@@ -218,6 +224,24 @@ class Order
         error_log('Order items inserted successfully');
 
         return true;
+    }
+
+    private function getTimeframeCondition($timeframe)
+    {
+        switch ($timeframe) {
+            case 'week':
+                return "date_ordered >= CURRENT_DATE - INTERVAL '7 days'";
+
+            case 'month':
+                return "date_ordered >= CURRENT_DATE - INTERVAL '1 month'";
+
+            case 'year':
+                return "date_ordered >= CURRENT_DATE - INTERVAL '1 year'";
+
+            case 'all':
+            default:
+                return "1 = 1";
+        }
     }
 
 }

@@ -1,34 +1,28 @@
-CREATE SCHEMA IF NOT EXISTS silversale;
+CREATE SCHEMA IF NOT EXISTS silversale2;
 
 SET search_path TO silversale;
 
-DROP TABLE IF EXISTS order_item;
-DROP TABLE IF EXISTS cart_item;
-DROP TABLE IF EXISTS favourite;
-DROP TABLE IF EXISTS session;
-
-DROP TABLE IF EXISTS order_address;
-DROP TABLE IF EXISTS order_main;
-DROP TABLE IF EXISTS cart;
-DROP TABLE IF EXISTS inventory;
-
-DROP TABLE IF EXISTS item;
-DROP TABLE IF EXISTS user_address;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS category;
-
-DROP TABLE IF EXISTS query;
-
-DROP TABLE IF EXISTS image;
-DROP TABLE IF EXISTS order_placed;
-DROP TABLE IF EXISTS address;
+DROP TABLE IF EXISTS order_item CASCADE;
+DROP TABLE IF EXISTS cart_item CASCADE;
+DROP TABLE IF EXISTS favourite CASCADE;
+DROP TABLE IF EXISTS session CASCADE;
+DROP TABLE IF EXISTS user_address CASCADE;
+DROP TABLE IF EXISTS order_address CASCADE;
+DROP TABLE IF EXISTS order_main CASCADE;
+DROP TABLE IF EXISTS cart CASCADE;
+DROP TABLE IF EXISTS inventory CASCADE;
+DROP TABLE IF EXISTS item CASCADE;
+DROP TABLE IF EXISTS category CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS query CASCADE;
 
 CREATE TABLE IF NOT exists users (
   user_id SERIAL PRIMARY KEY,
   username text,
   password text,
   email text UNIQUE,
-  role text
+  role text,
+  image text
 );
 
 CREATE TABLE IF NOT exists user_address (

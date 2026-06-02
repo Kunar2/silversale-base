@@ -262,6 +262,15 @@ class MainTest extends TestCase
             'listed' => 1
         ]);
 
+        $this->assertNotFalse($itemId);
+
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO inventory (item_id, size, quantity)
+            VALUES (?, ?, ?)"
+        );
+
+        $stmt->execute([$itemId, 'M', 10]);
+
         $item = $this->item->getItemAdminDetailed($itemId);
 
         $this->assertNotFalse($item);
@@ -297,7 +306,8 @@ class MainTest extends TestCase
         $this->assertFalse($item);
     }
 
-    public function testInsertOrder()
+
+    private function createTestOrder()
     {
         $user = $this->users->getByUsername($this->username);
         $this->assertNotFalse($user);
@@ -315,7 +325,19 @@ class MainTest extends TestCase
 
         $this->assertNotFalse($orderId);
 
-        $order = $this->order->getOrderItems($orderId);
+        return $orderId;
+    }
+
+    public function testInsertOrder()
+    {
+        $orderId = $this->createTestOrder();
+
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM order_main WHERE order_id = ?"
+        );
+        $stmt->execute([$orderId]);
+
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $this->assertNotFalse($order);
         $this->assertEquals($orderId, $order['order_id']);
@@ -323,43 +345,50 @@ class MainTest extends TestCase
 
     public function testUpdateOrder()
     {
-        $stmt = $this->pdo->query(
-            "SELECT order_id
-            FROM order_main
-            LIMIT 1"
+        $orderId = $this->createTestOrder();
+
+        $stmt = $this->pdo->prepare(
+            "UPDATE order_main
+            SET status = ?,
+                shipping_agent = ?,
+                waybill_number = ?,
+                estimated_delivery = ?,
+                delivered_at = ?
+            WHERE order_id = ?"
         );
 
-        $orderId = $stmt->fetchColumn();
-
-        $this->assertNotFalse($orderId);
-
-        $this->order->updateOrder($orderId, [
-            'status' => 'shipped',
-            'shipping_agent' => 'FedEx',
-            'waybill_number' => 'UPDATED123',
-            'estimated_delivery' => date('Y-m-d'),
-            'delivered_at' => null
+        $stmt->execute([
+            'shipped',
+            'FedEx',
+            'UPDATED123',
+            date('Y-m-d'),
+            null,
+            $orderId
         ]);
 
-        $order = $this->order->getOrderAdminDetailed($orderId);
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM order_main WHERE order_id = ?"
+        );
+        $stmt->execute([$orderId]);
+
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $this->assertNotFalse($order);
         $this->assertEquals('shipped', $order['status']);
+        $this->assertEquals('FedEx', $order['shipping_agent']);
+        $this->assertEquals('UPDATED123', $order['waybill_number']);
     }
 
     public function testGetOrder()
     {
-        $stmt = $this->pdo->query(
-            "SELECT order_id
-            FROM order_main
-            LIMIT 1"
+        $orderId = $this->createTestOrder();
+
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM order_main WHERE order_id = ?"
         );
+        $stmt->execute([$orderId]);
 
-        $orderId = $stmt->fetchColumn();
-
-        $this->assertNotFalse($orderId);
-
-        $order = $this->order->getOrderAdminDetailed($orderId);
+        $order = $stmt->fetch(PDO::FETCH_ASSOC); 
 
         $this->assertNotFalse($order);
         $this->assertEquals($orderId, $order['order_id']);
@@ -367,34 +396,175 @@ class MainTest extends TestCase
 
     public function testDeleteOrder()
     {
+        $orderId = $this->createTestOrder();
+
+        $stmt = $this->pdo->prepare(
+            "DELETE FROM order_main WHERE order_id = ?"
+        );
+        $stmt->execute([$orderId]);
+
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM order_main WHERE order_id = ?"
+        );
+        $stmt->execute([$orderId]);
+
+        $order = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->assertFalse($order);
+    }
+    
+    public function testInsertCart()
+    {
+        $user = $this->users->getByUsername($this->username);
+        $this->assertNotFalse($user);
+
+        $this->pdo->prepare(
+            "DELETE FROM cart WHERE user_id = ?"
+        )->execute([$user['user_id']]);
+
+        $cartId = $this->cart->insertCart($user['user_id']);
+
+        $this->assertNotFalse($cartId);
+
+        $foundCartId = $this->cart->getCartId($user['user_id']);
+
+        $this->assertEquals($cartId, $foundCartId);
+    }
+
+    public function testInsertCartItem()
+    {
+        $user = $this->users->getByUsername($this->username);
+        $this->assertNotFalse($user);
+
+        $cartId = $this->cart->getCartId($user['user_id']);
+
+        if (!$cartId) {
+            $cartId = $this->cart->insertCart($user['user_id']);
+        }
+
         $stmt = $this->pdo->query(
-            "SELECT order_id
-            FROM order_main
+            "SELECT unit_id
+            FROM inventory
             LIMIT 1"
         );
 
-        $orderId = $stmt->fetchColumn();
+        $unitId = $stmt->fetchColumn();
+        $this->assertNotFalse($unitId);
 
-        $this->assertNotFalse($orderId);
+        $this->cart->insertByCartId($cartId, $unitId, 1);
 
-        $stmt = $this->pdo->prepare(
-            "DELETE FROM order_main
-            WHERE order_id = ?"
+        $this->assertTrue(
+            $this->cart->unitInCart($cartId, $unitId)
         );
 
-        $stmt->execute([$orderId]);
+        $this->assertEquals(
+            1,
+            $this->cart->getQuantity($cartId, $unitId)
+        );
+    }
 
-        $stmt = $this->pdo->prepare(
-            "SELECT *
-            FROM order_main
-            WHERE order_id = ?"
+    public function testIncrementCartItemQuantity()
+    {
+        $user = $this->users->getByUsername($this->username);
+        $this->assertNotFalse($user);
+
+        $cartId = $this->cart->getCartId($user['user_id']);
+
+        if (!$cartId) {
+            $cartId = $this->cart->insertCart($user['user_id']);
+        }
+
+        $unitId = $this->pdo->query(
+            "SELECT unit_id FROM inventory LIMIT 1"
+        )->fetchColumn();
+
+        $this->assertNotFalse($unitId);
+
+        $this->cart->insertByCartId($cartId, $unitId, 1);
+        $this->cart->incrementQuantity($cartId, $unitId);
+
+        $this->assertEquals(
+            2,
+            $this->cart->getQuantity($cartId, $unitId)
+        );
+    }
+
+    public function testDeleteCartItem()
+    {
+        $user = $this->users->getByUsername($this->username);
+        $this->assertNotFalse($user);
+
+        $cartId = $this->cart->getCartId($user['user_id']);
+
+        if (!$cartId) {
+            $cartId = $this->cart->insertCart($user['user_id']);
+        }
+
+        $unitId = $this->pdo->query(
+            "SELECT unit_id FROM inventory LIMIT 1"
+        )->fetchColumn();
+
+        $this->assertNotFalse($unitId);
+
+        $this->cart->insertByCartId($cartId, $unitId, 1);
+
+        $this->assertTrue(
+            $this->cart->unitInCart($cartId, $unitId)
         );
 
-        $stmt->execute([$orderId]);
+        $this->cart->deleteCartUnitFull($cartId, $unitId);
 
-        $order = $stmt->fetch();
+        $this->assertFalse(
+            $this->cart->unitInCart($cartId, $unitId)
+        );
+    }
 
-        $this->assertFalse($order);
+    public function testAddFavourite()
+    {
+        $user = $this->users->getByUsername($this->username);
+        $this->assertNotFalse($user);
+
+        $itemId = $this->pdo->query(
+            "SELECT item_id FROM item LIMIT 1"
+        )->fetchColumn();
+
+        $this->assertNotFalse($itemId);
+
+        $this->favourite->deleteByUserId($user['user_id'], $itemId);
+
+        $this->assertFalse(
+            $this->favourite->isFavourited($user['user_id'], $itemId)
+        );
+
+        $this->favourite->insertByUserId($user['user_id'], $itemId);
+
+        $this->assertTrue(
+            $this->favourite->isFavourited($user['user_id'], $itemId)
+        );
+    }
+
+    public function testRemoveFavourite()
+    {
+        $user = $this->users->getByUsername($this->username);
+        $this->assertNotFalse($user);
+
+        $itemId = $this->pdo->query(
+            "SELECT item_id FROM item LIMIT 1"
+        )->fetchColumn();
+
+        $this->assertNotFalse($itemId);
+
+        $this->favourite->insertByUserId($user['user_id'], $itemId);
+
+        $this->assertTrue(
+            $this->favourite->isFavourited($user['user_id'], $itemId)
+        );
+
+        $this->favourite->deleteByUserId($user['user_id'], $itemId);
+
+        $this->assertFalse(
+            $this->favourite->isFavourited($user['user_id'], $itemId)
+        );
     }
 
 
@@ -414,5 +584,37 @@ class MainTest extends TestCase
             "DELETE FROM item
             WHERE name IN ('test_item', 'updated_test_item')"
         );
+
+        $this->pdo->exec(
+            "DELETE FROM cart_item
+            WHERE cart_id IN (
+                SELECT cart_id FROM cart
+                WHERE user_id IN (
+                    SELECT user_id FROM users
+                    WHERE username IN ('test_user', 'test_user2')
+                )
+            )"
+        );
+
+        $this->pdo->exec(
+            "DELETE FROM cart
+            WHERE user_id IN (
+                SELECT user_id FROM users
+                WHERE username IN ('test_user', 'test_user2')
+            )"
+        );
+
+        $this->pdo->exec(
+            "DELETE FROM users
+            WHERE username IN ('test_user', 'test_user2')"
+        );
+
+        $this->pdo->exec(
+        "DELETE FROM favourite
+        WHERE user_id IN (
+            SELECT user_id FROM users
+            WHERE username IN ('test_user', 'test_user2')
+        )"
+    );
     }
 }

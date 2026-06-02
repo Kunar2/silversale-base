@@ -5,7 +5,6 @@ SET search_path TO silversale;
 DROP TABLE IF EXISTS order_item CASCADE;
 DROP TABLE IF EXISTS cart_item CASCADE;
 DROP TABLE IF EXISTS favourite CASCADE;
-DROP TABLE IF EXISTS session CASCADE;
 DROP TABLE IF EXISTS user_address CASCADE;
 DROP TABLE IF EXISTS order_address CASCADE;
 DROP TABLE IF EXISTS order_main CASCADE;
@@ -63,11 +62,6 @@ CREATE TABLE IF NOT exists inventory (
   item_id integer REFERENCES item(item_id) ON DELETE CASCADE,
   size text,
   quantity integer
-);
-
-CREATE TABLE IF NOT exists session (
-  session_id text PRIMARY KEY,
-  user_id integer REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT exists favourite (

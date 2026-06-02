@@ -119,6 +119,7 @@ $itemExists = ($items['item_id'] ?? 0) !== 0;
                             type="text"
                             name="inventory[<?= $unit['unit_id'] ?>][quantity]"
                             value="<?= $unit['quantity'] ?? '' ?>"
+                            style="font-size:1.8rem"
                         >
                     </td>
                 </tr>

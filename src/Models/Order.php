@@ -193,7 +193,6 @@ class Order
             null
         ]);
 
-        error_log('Main inserted successfully');
 
         return $this->pdo->lastInsertId();
     }

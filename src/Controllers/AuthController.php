@@ -66,7 +66,7 @@ class AuthController extends BaseController
     public function createAccount()
     {
         $username = trim($_POST['username'] ?? '');
-        $password = $_POST['password'] ?? '';
+        $password = trim($_POST['password'] ?? '');
         $email    = trim($_POST['email'] ?? '');
 
         if ($username === '' || $password === '' || $email === '') {

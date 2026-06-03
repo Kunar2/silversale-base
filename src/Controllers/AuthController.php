@@ -4,15 +4,19 @@ namespace App\Controllers;
 
 use App\Core\BaseController;
 use App\Models\User;
+use App\Models\Cart;
+
 
 class AuthController extends BaseController
 {
     private User $user;
+    private Cart $cart;
 
     public function __construct()
     {
         parent::__construct();
         $this->user = new User($this->db);
+        $this->cart = new Cart($this->db);
     }
 
     public function login()
@@ -46,6 +50,7 @@ class AuthController extends BaseController
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['email'] = $user['email'];
 
             header('Location: /');
             exit;
@@ -61,7 +66,7 @@ class AuthController extends BaseController
     public function createAccount()
     {
         $username = trim($_POST['username'] ?? '');
-        $password = $_POST['password'] ?? '';
+        $password = trim($_POST['password'] ?? '');
         $email    = trim($_POST['email'] ?? '');
 
         if ($username === '' || $password === '' || $email === '') {
@@ -97,6 +102,10 @@ class AuthController extends BaseController
                 'error' => 'Error creating account.'
             ]);
         }
+
+        $user = $this->user->getByUsername($username);
+
+        $this->cart->insertCart($user['user_id']);
 
         $this->authenticate($username, $password);
 

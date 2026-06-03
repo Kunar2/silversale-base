@@ -4,7 +4,7 @@
             <div class="footer-section">
                 <h3>Contact us</h3>
                 <p>+1 234-567-8901 (General Questions)</p>
-                <p>+1 234-567-8901 (Customer Support)</p>
+                <p>+1 234-567-8901 (customer Support)</p>
                 <p>ViveLeau@gmail.com</p>
                 <p><a href="/submit-query">Submit query</a></p>
             </div>

@@ -5,9 +5,13 @@ require_once __DIR__ . '/../../partials/navbar.php';
 
 
     <div class="middle-text-register">
-        <?= $data['error'] = $data['error'] ?? ''; ?>
+        <?= is_array($data['error']) 
+            ? implode(', ', $data['error']) 
+            : ($data['error'] ?? '') 
+        ?>
 
         <form action="/register" method="POST" class="input-form">
+            <h1 style="text-align: center">Register</h1>
             <div>
                 <div class="data-type"><label for="username-input" class="data-type">Username</label></div>
                 <input type="text" id="username-input" name="username" class="input-field" placeholder="Username">

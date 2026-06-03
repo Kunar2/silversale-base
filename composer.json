@@ -12,5 +12,8 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "require": {
+        "dompdf/dompdf": "^3.1"
     }
 }

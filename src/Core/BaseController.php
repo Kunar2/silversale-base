@@ -19,6 +19,7 @@ class BaseController
      */
     protected function render(string $view, array $data = [])
     {
+
         // Automatically add common variables to every view
         
         $data['isLoggedIn']  = isset($_SESSION['user_id']) || isset($_SESSION['user']);
@@ -36,6 +37,16 @@ class BaseController
         $data['error'] = $data['error'] ?? [];
 
         $data['favourites'] = $data['favourites'] ?? [];
+        $data['cartItems'] = $data['cartItems'] ?? [];
+        $data['address'] = $data['address'] ?? [];
+        $data['userOrders'] = $data['userOrders'] ?? [];
+
+        $data['totalUsers'] = $data['totalUsers'] ?? 0;
+        $data['totalOrders'] = $data['totalOrders'] ?? 0;
+        $data['totalItemsSold'] = $data['totalItemsSold'] ?? 0;
+        $data['revenue'] = $data['revenue'] ?? 0;
+        $data['statusCounts'] = $data['statusCounts'] ?? [];
+        $data['timeframe'] = $data['timeframe'] ?? 'all';
 
         // Make all $data variables available directly in the view
         extract($data);

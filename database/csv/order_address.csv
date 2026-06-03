@@ -49,3 +49,15 @@ address_id,order_id,recipient_name,recipient_phone,country,city,address_line_1,a
 48,48,Mia,+447539486529,Germany,Munich,"High Street, 147",apartment 7,96073
 49,49,Chloe,+447834224770,Germany,Berlin,"King Street, 74",,57366
 50,50,Freya,+447318992915,France,Lyon,"Baker Street, 56",apartment 1,11576
+51,51,Emily,+447812450391,UK,London,"Maple Avenue, 18",flat 12,SW1A2BC
+52,52,Henry,+447934221508,Germany,Hamburg,"River Walk, 77",apartment 9,20457
+53,53,Lily,+447651882143,France,Marseille,"Queen Road, 41",,13001
+54,54,Jack,+447440918276,Spain,Barcelona,"Garden Lane, 63",flat 15,08012
+55,55,Sophia,+447328117540,Italy,Rome,"Victoria Avenue, 88",apartment 22,00184
+56,56,Oscar,+447785442109,Netherlands,Rotterdam,"Bridge Street, 14",,3011AA
+57,57,Amelia,+447612774328,Sweden,Malmo,"Church Street, 102",flat 5,21120
+58,58,Noah,+447998123665,Germany,Frankfurt,"Station Road, 29",apartment 18,60311
+59,59,Grace,+447521339480,UK,Manchester,"King Street, 132",,M12AB
+60,60,Leo,+447301556274,France,Toulouse,"Park Road, 51",flat 44,31000
+61,61,Freya,+447843771920,Spain,Valencia,"Market Lane, 73",,46001
+62,62,Arthur,+447659118432,Italy,Naples,"Oxford Road, 98",apartment 27,80121

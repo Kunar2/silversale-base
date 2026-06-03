@@ -9,6 +9,12 @@ require_once __DIR__ . '/../../partials/navbar.php';
 
         <span>Items</span>
 
+        <div>   
+            <a href="/admin-panel/items/item-data/0">
+                <button type="submit" class="submit">Add item</button>
+            </a>
+        </div>
+
         <table class="admin-panel-table">
         <tr>
             <th class="edit-column"></th>
@@ -17,49 +23,20 @@ require_once __DIR__ . '/../../partials/navbar.php';
             <th>Manufacturer</th>
         </tr>
 
-        <tr>
-            <td class="edit-column">
-            <a href="item-data?id=1">Edit <i class="fa-solid fa-pencil"></i></a>
-            </td>
-            <td>1</td>
-            <td>Baseball Cap</td>
-            <td>Mikes Corp.</td>
-        </tr>
+        <?php foreach ($items as $item): ?>
 
         <tr>
             <td class="edit-column">
-            <a href="item-data?id=2">Edit <i class="fa-solid fa-pencil"></i></a>
+            <a href="/admin-panel/items/item-data/<?= $item['item_id'] ?>">Edit <i class="fa-solid fa-pencil"></i></a>
             </td>
-            <td>2</td>
-            <td>White T-Shirt</td>
-            <td>Fashion et al.</td>
+            <td><?= $item['item_id'] ?></td>
+            <td><?= $item['name'] ?></td>
+            <td><?= $item['manufacturer'] ?></td>
         </tr>
 
-        <tr>
-            <td class="edit-column">
-            <a href="item-data?id=3">Edit <i class="fa-solid fa-pencil"></i></a>
-            </td>
-            <td>3</td>
-            <td>Denim Jacket</td>
-            <td>Mikes Corp.</td>
-        </tr>
+        <?php endforeach; ?>
 
-        <tr>
-            <td class="edit-column">
-            <a href="item-data?id=4">Edit <i class="fa-solid fa-pencil"></i></a>
-            </td>
-            <td>4</td>
-            <td>Cargo Pants</td>
-            <td>Cho Corp.</td>
-        </tr>
         </table>
-
-        <div>
-            <a href="item-data">
-                <button type="submit" class="submit">Add item</button>
-            </a>
-        </div>
-
     </div>
 </div>
 

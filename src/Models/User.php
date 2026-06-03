@@ -247,7 +247,6 @@ class User
 
     public function insertUser($username, $password, $email)
     {
-        
         $customerRole = 'customer';
 
         $username = trim($username);
@@ -276,12 +275,25 @@ class User
             VALUES (?, ?, ?, ?)'
         );
 
-        return $stmt->execute([
+        $success = $stmt->execute([
             $username,
             $hashedPassword,
             $email,
             $customerRole
         ]);
+
+        if (!$success) {
+            return false;
+        }
+
+        $userId = $this->pdo->lastInsertId();
+
+        $stmt = $this->pdo->prepare(
+            'INSERT INTO cart (user_id)
+            VALUES (?)'
+        );
+
+        return $stmt->execute([$userId]);
     }
 
     public function show()

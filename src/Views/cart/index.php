@@ -25,13 +25,13 @@ endforeach ?>
         <div class="cart-item" id="<?= $cartItem['unit_id'] ?>">
             
             <div class="cart-item-image">
-                <a href="item">
+                <a href="/catalogue/item/<?= $cartItem['item_id'] ?>">
                     <img src="<?= $cartItem['image'] ?>" alt="<?= $cartItem['name'] ?>">
                 </a>
             </div>
 
             <div class="cart-item-details">
-                <a href="item" class="cart-item-name">
+                <a href="/catalogue/item/<?= $cartItem['item_id'] ?>" class="cart-item-name">
                     <?= htmlspecialchars($cartItem['name']) ?> (<?= strtoupper($cartItem['size']) ?>)
                 </a>
                 <p class="cart-item-description"><?= htmlspecialchars($cartItem['description']) ?></p>

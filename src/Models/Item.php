@@ -210,11 +210,11 @@ class Item
                 break;
 
             case 'price_ascending':
-                $sql .= " ORDER BY price ASC";
+                $sql .= " ORDER BY sale_price ASC";
                 break;
 
             case 'price_descending':
-                $sql .= " ORDER BY price DESC";
+                $sql .= " ORDER BY sale_price DESC";
                 break;
 
             case 'name':

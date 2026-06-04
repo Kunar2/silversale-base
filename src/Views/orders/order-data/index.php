@@ -19,37 +19,37 @@ require_once __DIR__ . '/../../partials/navbar.php';
 
             <div class="form-group">
                 <label>Recipient name:</label>
-                <input type="text" name="recipient_name" value="<?= $userOrders['recipient_name'] ?>">
+                <input type="text" name="recipient_name" value="<?= $userOrders['recipient_name'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Recipient phone:</label>
-                <input type="text" name="recipient_phone" value="<?= $userOrders['recipient_phone'] ?>">
+                <input type="text" name="recipient_phone" value="<?= $userOrders['recipient_phone'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Country:</label>
-                <input type="text" name="country" value="<?= $userOrders['country'] ?>">
+                <input type="text" name="country" value="<?= $userOrders['country'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>City:</label>
-                <input type="text" name="city" value="<?= $userOrders['city'] ?>">
+                <input type="text" name="city" value="<?= $userOrders['city'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Address line 1:</label>
-                <input type="text" name="address_line_1" value="<?= $userOrders['address_line_1'] ?>">
+                <input type="text" name="address_line_1" value="<?= $userOrders['address_line_1'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Address line 2:</label>
-                <input type="text" name="address_line_2" value="<?= $userOrders['address_line_2'] ?>">
+                <input type="text" name="address_line_2" value="<?= $userOrders['address_line_2'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Postal code:</label>
-                <input type="text" name="postal_code" value="<?= $userOrders['postal_code'] ?>">
+                <input type="text" name="postal_code" value="<?= $userOrders['postal_code'] ?>" disabled>
             </div>
         </div>
 
@@ -61,32 +61,32 @@ require_once __DIR__ . '/../../partials/navbar.php';
 
             <div class="form-group">
                 <label>Status:</label>
-                <input type="text" name="status" value="<?= $userOrders['status'] ?>">
+                <input type="text" name="status" value="<?= $userOrders['status'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Shipping agent:</label>
-                <input type="text" name="shipping_agent" value="<?= $userOrders['shipping_agent'] ?>">
+                <input type="text" name="shipping_agent" value="<?= $userOrders['shipping_agent'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Waybill number:</label>
-                <input type="text" name="waybill_number" value="<?= $userOrders['waybill_number'] ?>">
+                <input type="text" name="waybill_number" value="<?= $userOrders['waybill_number'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Date:</label>
-                <input type="text" name="date_ordered" value="<?= date('d/m/Y', strtotime($userOrders['date_ordered'])) ?>">
+                <input type="text" name="date_ordered" value="<?= date('d/m/Y', strtotime($userOrders['date_ordered'])) ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Total price:</label>
-                <input type="text" name="total_price" value="<?= $userOrders['total_price'] ?>">
+                <input type="text" name="total_price" value="<?= $userOrders['total_price'] ?>" disabled>
             </div>
 
             <div class="form-group">
                 <label>Estimated delivery:</label>
-                <input type="text" name="estimated_delivery" value="<?= date('d/m/Y', strtotime($userOrders['estimated_delivery'])) ?>">
+                <input type="text" name="estimated_delivery" value="<?= date('d/m/Y', strtotime($userOrders['estimated_delivery'])) ?>" disabled>
             </div>
 
             <div class="form-group">
@@ -95,6 +95,7 @@ require_once __DIR__ . '/../../partials/navbar.php';
                     type="text" 
                     name="delivered_at"
                     value="<?= $userOrders['delivered_at'] ? date('d/m/Y', strtotime($userOrders['delivered_at'])) : '' ?>"
+                    disabled
                 >
             </div>
         </div>
